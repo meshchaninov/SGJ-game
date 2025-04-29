@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://bpldkcix5pjlq"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 383.0
+offset_bottom = 83.0
+text = "Добавлена главная сцена
+
+Также пофиксил корсы"
