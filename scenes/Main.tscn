@@ -3,8 +3,11 @@
 [node name="Main" type="Node2D"]
 
 [node name="Label" type="Label" parent="."]
-offset_right = 383.0
-offset_bottom = 83.0
+offset_left = 9.0
+offset_top = 17.0
+offset_right = 392.0
+offset_bottom = 100.0
 text = "Добавлена главная сцена
 
-Также пофиксил корсы"
+Также пофиксил корсы
+Cool"
