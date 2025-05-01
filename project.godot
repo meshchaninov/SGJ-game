@@ -15,6 +15,10 @@ run/main_scene="uid://bpldkcix5pjlq"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalState="*res://globalState.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray()
