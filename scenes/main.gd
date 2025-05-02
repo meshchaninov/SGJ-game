@@ -12,3 +12,7 @@ func _on_start_scene_start() -> void:
 	var text_scene = preload("res://scenes/TextStory.tscn").instantiate()
 	text_scene.position = Vector2(0, 720)
 	add_child(text_scene)
+
+func _on_end_scene_end() -> void:
+	new_game()
+	
