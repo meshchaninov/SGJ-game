@@ -11,13 +11,18 @@ config_version=5
 [application]
 
 config/name="SGJ-game"
-run/main_scene="uid://bpldkcix5pjlq"
+run/main_scene="uid://cgw5hcvpgeno"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GlobalState="*res://globalState.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [editor_plugins]
 
