@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://fybsyppi2lef"]
+[gd_scene load_steps=4 format=3 uid="uid://fybsyppi2lef"]
 
+[ext_resource type="Script" uid="uid://byp1bj4o4whjp" path="res://scenes/text_story.gd" id="1_5af7w"]
 [ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="1_uc2jp"]
+[ext_resource type="FontFile" uid="uid://cbgmd2jhm2xhx" path="res://assets/fonts/clacon2.ttf" id="2_pp542"]
 
 [node name="TextStory" type="Control"]
 layout_mode = 3
@@ -9,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_5af7w")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_direction = 2
@@ -24,10 +27,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/normal_font = ExtResource("1_uc2jp")
+theme_override_fonts/mono_font = ExtResource("2_pp542")
+theme_override_font_sizes/mono_font_size = 40
 theme_override_font_sizes/normal_font_size = 40
-text = "Жили-были старик со старухой, решили они испечь изделие хлебобулочное.  И появился у них Колобок, глютенный бок. Говорит Колобку Бабка: «Колобок-Колобок, поди-ка сюда!»
-[1. Подойти] а1
+bbcode_enabled = true
+text = "Жили-были старик со старухой, решили они испечь изделие хлебобулочное.  И появился у них Колобок, глютенный бок. Говорит Колобку Бабка: «[wave]Колобок-Колобок, поди-ка сюда![/wave]»
+
+[code][1. Подойти] а1
 [2. Укатиться] а2
+[/code]
 
 а1:
 Подкатился Колобок к Бабке, сел в неё и конец.
