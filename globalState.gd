@@ -19,6 +19,9 @@ var max_hp = 2
 var speed = 1
 var attack = 1
 
+# Text Story
+var current_chapter = 1
+
 # Подрубается при геймовере
 func reset():
 	fox_meeting_number = 0
@@ -26,4 +29,5 @@ func reset():
 	max_hp = 2
 	speed = 1
 	attack = 1
+	current_chapter = 1
 	

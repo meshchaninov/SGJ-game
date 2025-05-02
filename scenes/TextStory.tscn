@@ -19,21 +19,6 @@ tracks/0/keys = {
 "values": [Vector2(0, 720), Vector2(0, 620)]
 }
 
-[sub_resource type="Animation" id="Animation_apqcp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 720)]
-}
-
 [sub_resource type="Animation" id="Animation_01a32"]
 resource_name = "FadeOutButtons"
 tracks/0/type = "value"
@@ -47,6 +32,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 620), Vector2(0, 720)]
+}
+
+[sub_resource type="Animation" id="Animation_apqcp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 720)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_01a32"]
@@ -149,3 +149,8 @@ text = "Select 4"
 libraries = {
 &"": SubResource("AnimationLibrary_01a32")
 }
+
+[connection signal="pressed" from="HBoxContainer/ColorRect/Select 1" to="." method="_on_select_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/ColorRect/Select 2" to="." method="_on_select_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/ColorRect/Select 3" to="." method="_on_select_3_pressed"]
+[connection signal="pressed" from="HBoxContainer/ColorRect/Select 4" to="." method="_on_select_4_pressed"]
