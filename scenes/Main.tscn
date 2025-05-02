@@ -1,17 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpldkcix5pjlq"]
+[gd_scene load_steps=4 format=3 uid="uid://bpldkcix5pjlq"]
 
 [ext_resource type="Script" uid="uid://vgxuk35nrg4o" path="res://scenes/main.gd" id="1_elqb8"]
-[ext_resource type="PackedScene" uid="uid://dktp16lsa2kf" path="res://scenes/TextStory.tscn" id="2_rarhs"]
 [ext_resource type="PackedScene" uid="uid://cgw5hcvpgeno" path="res://scenes/start_end/StartScene.tscn" id="3_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://cl8rbri462u4j" path="res://scenes/start_end/EndScene.tscn" id="4_c01mt"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_elqb8")
 
-[node name="TextStory" parent="." instance=ExtResource("2_rarhs")]
-
 [node name="StartScene" parent="." instance=ExtResource("3_vcsgt")]
+visible = false
 
 [node name="EndScene" parent="." instance=ExtResource("4_c01mt")]
+visible = false
 
 [connection signal="start" from="StartScene" to="." method="_on_start_scene_start"]
