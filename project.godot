@@ -11,13 +11,10 @@ config_version=5
 [application]
 
 config/name="SGJ-game"
-<<<<<<< HEAD
-run/main_scene="uid://cgw5hcvpgeno"
-=======
-run/main_scene="uid://ccbptpror07jw"
->>>>>>> 30e55859340859aa0a60f589345064d90d7d8cc1
+run/main_scene="uid://fybsyppi2lef"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+<<<<<<<HEADrun/main_scene="uid://cgw5hcvpgeno"
 
 [autoload]
 
@@ -27,10 +24,7 @@ GlobalState="*res://globalState.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-<<<<<<< HEAD
-=======
 window/size/resizable=false
->>>>>>> 30e55859340859aa0a60f589345064d90d7d8cc1
 
 [editor_plugins]
 
