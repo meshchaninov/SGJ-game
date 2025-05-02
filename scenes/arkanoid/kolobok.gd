@@ -15,17 +15,15 @@ func _physics_process(delta: float) -> void:
 	
 	var result_speed = GlobalState.speed * SPEED
 
-	if Input.is_action_just_released("up") || Input.is_action_just_released("down"):
-		if Input.is_action_just_released("up"):
-			y_pressed_order.erase('up')
-		if Input.is_action_just_released("down"):
-			y_pressed_order.erase('down')
-		
-	if Input.is_action_just_released("left") || Input.is_action_just_released("right"):
-		if Input.is_action_just_released("left"):
-			x_pressed_order.erase('left')
-		if Input.is_action_just_released("right"):
-			x_pressed_order.erase('right')
+	if Input.is_action_just_released("up"):
+		y_pressed_order.erase('up')
+	if Input.is_action_just_released("down"):
+		y_pressed_order.erase('down')
+
+	if Input.is_action_just_released("left"):
+		x_pressed_order.erase('left')
+	if Input.is_action_just_released("right"):
+		x_pressed_order.erase('right')
 	
 	if Input.is_action_just_pressed("up"):
 		y_pressed_order.push_front('up')
