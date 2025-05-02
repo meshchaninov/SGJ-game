@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SGJ-game"
-run/main_scene="uid://fybsyppi2lef"
+run/main_scene="uid://cgw5hcvpgeno"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 <<<<<<<HEADrun/main_scene="uid://cgw5hcvpgeno"
