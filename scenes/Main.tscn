@@ -14,3 +14,4 @@ visible = false
 visible = false
 
 [connection signal="start" from="StartScene" to="." method="_on_start_scene_start"]
+[connection signal="end" from="EndScene" to="." method="_on_end_scene_end"]
