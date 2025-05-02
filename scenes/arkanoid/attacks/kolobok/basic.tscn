@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://rlo0ea68p7"]
+
+[ext_resource type="Texture2D" uid="uid://lklf3c3vhxr8" path="res://assets/sprites/dummy/basic_attack.png" id="1_2p0a6"]
+[ext_resource type="Script" uid="uid://dwgvebu64tsob" path="res://scenes/arkanoid/attacks/kolobok/basic.gd" id="1_pr4mf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr4mf"]
+atlas = ExtResource("1_2p0a6")
+region = Rect2(0, 0, 46, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o82mk"]
+atlas = ExtResource("1_2p0a6")
+region = Rect2(46, 0, 46, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56xb1"]
+atlas = ExtResource("1_2p0a6")
+region = Rect2(92, 0, 46, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqeer"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pr4mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o82mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56xb1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6xjja"]
+radius = 11.0
+height = 40.0
+
+[node name="Basic" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_pr4mf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hqeer")
+autoplay = "default"
+frame_progress = 0.561679
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6xjja")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.499999, 1)
+scale = Vector2(2.05, 1.2)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

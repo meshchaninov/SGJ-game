@@ -1,14 +1,50 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccbptpror07jw"]
+[gd_scene load_steps=4 format=3 uid="uid://ccbptpror07jw"]
 
 [ext_resource type="Script" uid="uid://bm6hg4rs56mnm" path="res://scenes/arkanoid/arkanoid.gd" id="1_hqduh"]
 [ext_resource type="PackedScene" uid="uid://o0of4k8n3p1h" path="res://scenes/arkanoid/kolobok.tscn" id="2_80qe2"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_80qe2"]
 
 [node name="Arcanoid" type="Node2D"]
 script = ExtResource("1_hqduh")
 
 [node name="Kolobok" parent="." instance=ExtResource("2_80qe2")]
-position = Vector2(358, 219)
+position = Vector2(633.429, 253.201)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 process_callback = 0
+
+[node name="GlobalWall" type="StaticBody2D" parent="."]
+position = Vector2(397.273, 704.818)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GlobalWall"]
+shape = SubResource("WorldBoundaryShape2D_80qe2")
+
+[node name="GlobalWall2" type="StaticBody2D" parent="."]
+position = Vector2(531.243, 16.3517)
+rotation = 3.14159
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GlobalWall2"]
+shape = SubResource("WorldBoundaryShape2D_80qe2")
+
+[node name="GlobalWall3" type="StaticBody2D" parent="."]
+position = Vector2(1259.19, 314.216)
+rotation = -1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GlobalWall3"]
+shape = SubResource("WorldBoundaryShape2D_80qe2")
+
+[node name="GlobalWall4" type="StaticBody2D" parent="."]
+position = Vector2(45.5917, 306.347)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GlobalWall4"]
+shape = SubResource("WorldBoundaryShape2D_80qe2")
+
+[node name="TimerBeforeStart" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="TimerBeforeStart" to="." method="_on_timer_before_start_timeout"]
