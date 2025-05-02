@@ -5,7 +5,7 @@ extends Node2D
 func _ready() -> void:
 	dummy_init()
 
-
+@onready var Kolobok = $Kolobok
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -15,3 +15,9 @@ func _process(delta: float) -> void:
 func dummy_init():
 	GlobalState.fox_meeting_number += 1
 	GlobalState.fox_speed_level +=1
+
+
+func _on_timer_before_start_timeout() -> void:
+	print('FIGHT START')
+	Kolobok.startFight()
+	# TODO: тут еще лису подрубать

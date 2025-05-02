@@ -1,0 +1,118 @@
+[gd_scene load_steps=16 format=3 uid="uid://rlo0ea68p7"]
+
+[ext_resource type="Texture2D" uid="uid://lklf3c3vhxr8" path="res://assets/sprites/dummy/basic_attack.png" id="1_2p0a6"]
+[ext_resource type="Script" uid="uid://dwgvebu64tsob" path="res://scenes/arkanoid/attacks/kolobok/basic.gd" id="1_pr4mf"]
+[ext_resource type="AudioStream" uid="uid://c65h6rf0n06c1" path="res://assets/audio/kolobok_basic_attack.mp3" id="3_o82mk"]
+[ext_resource type="Texture2D" uid="uid://ckrfhc0204v7j" path="res://assets/sprites/kolobok_lazer.png" id="4_56xb1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6xjja"]
+height = 36.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o82mk"]
+atlas = ExtResource("1_2p0a6")
+region = Rect2(0, 0, 52, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56xb1"]
+atlas = ExtResource("1_2p0a6")
+region = Rect2(52, 0, 52, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqeer"]
+atlas = ExtResource("1_2p0a6")
+region = Rect2(104, 0, 52, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqeer"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o82mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56xb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqeer")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xjja"]
+atlas = ExtResource("4_56xb1")
+region = Rect2(0, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xion5"]
+atlas = ExtResource("4_56xb1")
+region = Rect2(34, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exopm"]
+atlas = ExtResource("4_56xb1")
+region = Rect2(68, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjmmp"]
+atlas = ExtResource("4_56xb1")
+region = Rect2(102, 0, 34, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_txepn"]
+atlas = ExtResource("4_56xb1")
+region = Rect2(136, 0, 34, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rvvul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xjja")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xion5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exopm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjmmp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_txepn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Basic" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_pr4mf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6xjja")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(0.499999, 1)
+scale = Vector2(2.05, 1.2)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("3_o82mk")
+volume_db = -25.843
+
+[node name="Sprites" type="Node2D" parent="."]
+scale = Vector2(0.786, 0.786)
+
+[node name="Basic" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_hqeer")
+autoplay = "default"
+frame_progress = 0.615282
+
+[node name="Lazer" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
+position = Vector2(0, 0.6)
+scale = Vector2(1.491, 1.491)
+sprite_frames = SubResource("SpriteFrames_rvvul")
+autoplay = "default"
+frame_progress = 0.553088
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

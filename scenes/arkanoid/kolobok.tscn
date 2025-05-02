@@ -52,5 +52,11 @@ shape = SubResource("CircleShape2D_xmbe7")
 scale = Vector2(0.385246, 0.385246)
 sprite_frames = SubResource("SpriteFrames_puenv")
 autoplay = "default"
-frame_progress = 0.432812
+frame_progress = 0.0272881
 flip_h = true
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.285
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
