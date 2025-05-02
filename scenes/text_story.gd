@@ -24,7 +24,7 @@ func _ready() -> void:
 	select_2_button = get_node("HBoxContainer/ColorRect/Select 2")
 	select_3_button = get_node("HBoxContainer/ColorRect/Select 3")
 	select_4_button = get_node("HBoxContainer/ColorRect/Select 4")
-	_render_text()
+	_render_text(GlobalState.current_chapter)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
@@ -128,12 +128,15 @@ func _read_story():
 					if parser.get_node_name() == "selection":
 						var back_to = ""
 						var n_value = ""
+						var update = ""
 						for indx in parser.get_attribute_count():
 							var attribute_name = parser.get_attribute_name(indx)
 							if attribute_name == "backto":
 								back_to = parser.get_attribute_value(indx)
 							elif attribute_name == "n":
 								n_value = parser.get_attribute_value(indx)
+							elif attribute_name == "update":
+								update = parser.get_attribute_value(indx)
 						parser.read()
 						var data_value = parser.get_node_data()
 						selections.append({

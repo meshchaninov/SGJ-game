@@ -20,7 +20,7 @@ var speed = 1
 var attack = 1
 
 # Text Story
-var current_chapter = 1
+var current_chapter = 2
 
 # Подрубается при геймовере
 func reset():
