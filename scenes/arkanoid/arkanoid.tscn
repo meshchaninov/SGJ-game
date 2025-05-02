@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccbptpror07jw"]
+
+[ext_resource type="Script" uid="uid://bm6hg4rs56mnm" path="res://scenes/arkanoid/arkanoid.gd" id="1_hqduh"]
+[ext_resource type="PackedScene" uid="uid://o0of4k8n3p1h" path="res://scenes/arkanoid/kolobok.tscn" id="2_80qe2"]
+
+[node name="Arcanoid" type="Node2D"]
+script = ExtResource("1_hqduh")
+
+[node name="Kolobok" parent="." instance=ExtResource("2_80qe2")]
+position = Vector2(358, 219)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+process_callback = 0
