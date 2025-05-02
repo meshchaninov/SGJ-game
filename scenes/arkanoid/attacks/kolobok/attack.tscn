@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://d3a0q0tisyoic"]
+
+[ext_resource type="Script" uid="uid://dwgvebu64tsob" path="res://scenes/arkanoid/attacks/kolobok/basic.gd" id="1_3ddge"]
+[ext_resource type="AudioStream" uid="uid://c65h6rf0n06c1" path="res://assets/audio/kolobok_basic_attack.mp3" id="2_8ckdi"]
+[ext_resource type="Texture2D" uid="uid://lklf3c3vhxr8" path="res://assets/sprites/dummy/basic_attack.png" id="3_viv2r"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6xjja"]
+height = 36.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o82mk"]
+atlas = ExtResource("3_viv2r")
+region = Rect2(0, 0, 52, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56xb1"]
+atlas = ExtResource("3_viv2r")
+region = Rect2(52, 0, 52, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqeer"]
+atlas = ExtResource("3_viv2r")
+region = Rect2(104, 0, 52, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqeer"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o82mk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56xb1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqeer")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Basic" type="Area2D"]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_3ddge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6xjja")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(0.499999, 1)
+scale = Vector2(2.05, 1.2)
+
+[node name="AudioBasic" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("2_8ckdi")
+volume_db = -25.843
+
+[node name="Sprites" type="Node2D" parent="."]
+scale = Vector2(0.786, 0.786)
+
+[node name="Basic" type="AnimatedSprite2D" parent="Sprites"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_hqeer")
+autoplay = "default"
+frame_progress = 0.320683

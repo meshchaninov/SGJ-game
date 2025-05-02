@@ -1,3 +1,26 @@
-[gd_scene format=3 uid="uid://drx1854n2hc0p"]
+[gd_scene load_steps=4 format=3 uid="uid://bvua485oi8jpu"]
 
-[node name="Fox" type="Node2D"]
+[ext_resource type="Script" uid="uid://f480ttk13vaa" path="res://scenes/arkanoid/fox.gd" id="1_xyauj"]
+[ext_resource type="Texture2D" uid="uid://bkud2sps3d54i" path="res://assets/sprites/fox/fox_side2.png" id="2_xyauj"]
+[ext_resource type="Texture2D" uid="uid://djki7huwqjuae" path="res://assets/sprites/fox/fox_side_paw.png" id="2_yh8vg"]
+
+[node name="Fox" type="Area2D"]
+script = ExtResource("1_xyauj")
+
+[node name="FoxVisual" type="Node2D" parent="."]
+
+[node name="First" type="Sprite2D" parent="FoxVisual"]
+visible = false
+position = Vector2(32, 37)
+texture = ExtResource("2_yh8vg")
+
+[node name="Second" type="Sprite2D" parent="FoxVisual"]
+visible = false
+position = Vector2(32, -2)
+texture = ExtResource("2_xyauj")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, -27, 25, -27, 30, -22, 40, -7, 47, -2, 58, -3, 59, -2, 59, 1, 58, 6, 47, 11, 34, 13, 19, 16, 17, 23, 6, 37, 8, 66, 14, 67, 15, 71, -1, 71)
+one_way_collision_margin = 29.4
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

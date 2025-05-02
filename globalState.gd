@@ -12,7 +12,7 @@ extends Node
 var fox_meeting_number = 0
 # Тоже повышается после каждого выбора
 var fox_speed_level = 0
-
+var fox_hp = 600
 
 ## Player
 var max_hp = 2

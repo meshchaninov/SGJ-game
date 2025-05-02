@@ -42,7 +42,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Kolobok" type="CharacterBody2D"]
+[node name="Kolobok2" type="CharacterBody2D"]
 script = ExtResource("1_xmbe7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
