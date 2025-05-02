@@ -1,7 +1,10 @@
 extends Control
 
+signal StartFight
+
 var story_blocks = {}
 var current_chapter = 1
+var selected_chapter = 1
 var skip_visible_char = false
 var rich_text_label_node: RichTextLabel
 var buttons_container: HBoxContainer
@@ -150,3 +153,23 @@ func _read_story():
 	return story_blocks
 				
 			
+
+
+func _on_select_1_pressed() -> void:
+	animate_select_buttons.play("FadeOutButtons")
+	get_tree().reload_current_scene()
+
+
+func _on_select_2_pressed() -> void:
+	animate_select_buttons.play("FadeOutButtons")
+	get_tree().reload_current_scene()
+
+
+func _on_select_3_pressed() -> void:
+	animate_select_buttons.play("FadeOutButtons")
+	get_tree().reload_current_scene()
+
+
+func _on_select_4_pressed() -> void:
+	animate_select_buttons.play("FadeOutButtons")
+	get_tree().reload_current_scene()
