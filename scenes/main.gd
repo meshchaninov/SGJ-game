@@ -6,12 +6,11 @@ func _ready() -> void:
 func new_game():
 	$StartScene.show()
 	$EndScene.hide()
+	$TextStory.hide()
 
 func _on_start_scene_start() -> void:
 	$StartScene.hide()
-	var text_scene = preload("res://scenes/TextStory.tscn").instantiate()
-	text_scene.position = Vector2(0, 720)
-	add_child(text_scene)
+	$TextStory.show()
 
 func _on_end_scene_end() -> void:
 	new_game()

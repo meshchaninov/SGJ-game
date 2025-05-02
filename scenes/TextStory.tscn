@@ -4,61 +4,6 @@
 [ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="1_uc2jp"]
 [ext_resource type="FontFile" uid="uid://cbgmd2jhm2xhx" path="res://assets/fonts/clacon2.ttf" id="2_pp542"]
 
-<<<<<<< HEAD
-=======
-[sub_resource type="Animation" id="Animation_5af7w"]
-resource_name = "FadeInButtons"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 720), Vector2(0, 620)]
-}
-
-[sub_resource type="Animation" id="Animation_01a32"]
-resource_name = "FadeOutButtons"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.766667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 620), Vector2(0, 720)]
-}
-
-[sub_resource type="Animation" id="Animation_apqcp"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("HBoxContainer:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 720)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_01a32"]
-_data = {
-&"FadeInButtons": SubResource("Animation_5af7w"),
-&"FadeOutButtons": SubResource("Animation_01a32"),
-&"RESET": SubResource("Animation_apqcp")
-}
-
->>>>>>> 1e6dd5325aad9a422784ac4e0d569f934633ac83
 [node name="TextStory" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -185,16 +130,3 @@ offset_right = 756.0
 offset_bottom = 70.0
 size_flags_horizontal = 0
 text = "Select 4"
-<<<<<<< HEAD
-=======
-
-[node name="AnimateSelectButtons" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_01a32")
-}
-
-[connection signal="pressed" from="HBoxContainer/ColorRect/Select 1" to="." method="_on_select_1_pressed"]
-[connection signal="pressed" from="HBoxContainer/ColorRect/Select 2" to="." method="_on_select_2_pressed"]
-[connection signal="pressed" from="HBoxContainer/ColorRect/Select 3" to="." method="_on_select_3_pressed"]
-[connection signal="pressed" from="HBoxContainer/ColorRect/Select 4" to="." method="_on_select_4_pressed"]
->>>>>>> 1e6dd5325aad9a422784ac4e0d569f934633ac83
