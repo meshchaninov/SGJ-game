@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ckrfhc0204v7j"
-path="res://.godot/imported/kolobok_lazer.png-031c4ef9e113da679f613aa51f2e0b0f.ctex"
+path="res://.godot/imported/kolobok_lazer.png-93ff7a8a7bf1e132b895fdb442d8938e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/kolobok_lazer.png"
-dest_files=["res://.godot/imported/kolobok_lazer.png-031c4ef9e113da679f613aa51f2e0b0f.ctex"]
+source_file="res://assets/sprites/kolobok/kolobok_lazer.png"
+dest_files=["res://.godot/imported/kolobok_lazer.png-93ff7a8a7bf1e132b895fdb442d8938e.ctex"]
 
 [params]
 
