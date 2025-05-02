@@ -60,6 +60,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 var BasicAttack = preload("res://scenes/arkanoid/attacks/kolobok/basic.tscn")
+
 func attack():
 	if GlobalState.attack == 1:
 		var attack = BasicAttack.instantiate()
