@@ -15,6 +15,15 @@ visible = false
 visible = false
 
 [node name="TextStory" parent="." instance=ExtResource("2_rarhs")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 648.0
+offset_top = 368.0
+offset_right = 648.0
+offset_bottom = 368.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="start" from="StartScene" to="." method="_on_start_scene_start"]
 [connection signal="end" from="EndScene" to="." method="_on_end_scene_end"]
