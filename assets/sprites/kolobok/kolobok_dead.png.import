@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5gn3jhh2xr2u"
-path="res://.godot/imported/kolobok_dead.png-03b456e9ed492f5ad9cfaa4799073fd8.ctex"
+path="res://.godot/imported/kolobok_dead.png-09e5c8e6a88648e0876118394a7c5f5a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/kolobok_dead.png"
-dest_files=["res://.godot/imported/kolobok_dead.png-03b456e9ed492f5ad9cfaa4799073fd8.ctex"]
+source_file="res://assets/sprites/kolobok/kolobok_dead.png"
+dest_files=["res://.godot/imported/kolobok_dead.png-09e5c8e6a88648e0876118394a7c5f5a.ctex"]
 
 [params]
 

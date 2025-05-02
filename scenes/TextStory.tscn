@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://fybsyppi2lef"]
+[gd_scene load_steps=4 format=3 uid="uid://dktp16lsa2kf"]
 
-[ext_resource type="Script" uid="uid://byp1bj4o4whjp" path="res://scenes/text_story.gd" id="1_5af7w"]
+[ext_resource type="Script" path="res://scenes/text_story.gd" id="1_5af7w"]
 [ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="1_uc2jp"]
 [ext_resource type="FontFile" uid="uid://cbgmd2jhm2xhx" path="res://assets/fonts/clacon2.ttf" id="2_pp542"]
 

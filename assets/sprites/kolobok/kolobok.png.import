@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bbyutmbgk2bs6"
-path="res://.godot/imported/kolobok.png-b015d8c2b9569650fd41a05305580143.ctex"
+path="res://.godot/imported/kolobok.png-62c1123d80a41a1c5a55e42b712a5667.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/kolobok.png"
-dest_files=["res://.godot/imported/kolobok.png-b015d8c2b9569650fd41a05305580143.ctex"]
+source_file="res://assets/sprites/kolobok/kolobok.png"
+dest_files=["res://.godot/imported/kolobok.png-62c1123d80a41a1c5a55e42b712a5667.ctex"]
 
 [params]
 
