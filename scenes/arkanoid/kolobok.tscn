@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://o0of4k8n3p1h"]
+
+[ext_resource type="Texture2D" uid="uid://wuhyqmvv5pch" path="res://assets/sprites/dummy/kolobok.png" id="1_fa6sp"]
+[ext_resource type="Script" uid="uid://dpefieleufn3v" path="res://scenes/arkanoid/kolobok.gd" id="1_xmbe7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xmbe7"]
+radius = 23.0868
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfpxy"]
+atlas = ExtResource("1_fa6sp")
+region = Rect2(0, 0, 122, 122)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8db2q"]
+atlas = ExtResource("1_fa6sp")
+region = Rect2(122, 0, 122, 122)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a836h"]
+atlas = ExtResource("1_fa6sp")
+region = Rect2(244, 0, 122, 122)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpnri"]
+atlas = ExtResource("1_fa6sp")
+region = Rect2(366, 0, 122, 122)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_puenv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfpxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8db2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a836h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpnri")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Kolobok2" type="CharacterBody2D"]
+script = ExtResource("1_xmbe7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_xmbe7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.385246, 0.385246)
+sprite_frames = SubResource("SpriteFrames_puenv")
+autoplay = "default"
+frame_progress = 0.432812
+flip_h = true
