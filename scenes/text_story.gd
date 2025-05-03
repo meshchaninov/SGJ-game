@@ -82,7 +82,7 @@ func _render_text(chapter=1):
 				skip_visible_char = false
 				break
 			rich_text_label_node.visible_characters += 1
-			await get_tree().create_timer(1.0 / float(len(GlobalState.chapter_answer))).timeout
+			await get_tree().create_timer(0.05).timeout
 		
 	for elem in body:
 		if elem["type"] == "text":
@@ -93,7 +93,7 @@ func _render_text(chapter=1):
 					skip_visible_char = false
 					break
 				rich_text_label_node.visible_characters += 1
-				await get_tree().create_timer(float(elem["speed"]) / float(elem["text"].length())).timeout
+				await get_tree().create_timer(float(elem["speed"])).timeout
 		elif elem["type"] == "selections":
 			rich_text_label_node.text += "\n"
 			for selection in elem["selections"]:
@@ -138,7 +138,7 @@ func _read_story():
 					
 			elif node_name == "text":
 				parser.read()
-				var speed = "1"
+				var speed = "0.05"
 				var backto = null
 				for indx in parser.get_attribute_count():
 					var attribute_name = parser.get_attribute_name(indx)
@@ -151,7 +151,7 @@ func _read_story():
 				story_blocks[current_choose].append({
 					"type": "text",
 					"text": data,
-					"speed": int(speed),
+					"speed": float(speed),
 					"backto": backto
 				})
 			elif node_name == "select":

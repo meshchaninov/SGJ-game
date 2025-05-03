@@ -109,11 +109,11 @@ frame_progress = 0.133283
 
 [node name="Lazer" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
-position = Vector2(0, 0.6)
-scale = Vector2(1.491, 1.491)
+position = Vector2(0, 2.54453)
+scale = Vector2(1.491, 3.59228)
 sprite_frames = SubResource("SpriteFrames_rvvul")
 autoplay = "default"
-frame_progress = 0.471294
+frame_progress = 0.574738
 
 [node name="Hit" type="Sprite2D" parent="."]
 visible = false

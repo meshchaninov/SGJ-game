@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bwedepy34btxx"]
+
+[node name="Lazer" type="Area2D"]
