@@ -119,6 +119,26 @@ func attack():
 		var basicAttack = BasicAttack.instantiate()
 		basicAttack.position = Vector2(global_position.x - $CollisionShape2D.shape.get_rect().size.x, global_position.y)
 		owner.add_child(basicAttack)
+	if GlobalState.attack == 2:
+		var basicAttack1 = BasicAttack.instantiate()
+		basicAttack1.position = Vector2(global_position.x - $CollisionShape2D.shape.get_rect().size.x, global_position.y - 5)
+		owner.add_child(basicAttack1)
+		
+		var basicAttack2 = BasicAttack.instantiate()
+		basicAttack2.position = Vector2(global_position.x - $CollisionShape2D.shape.get_rect().size.x, global_position.y + 5)
+		owner.add_child(basicAttack2)
+	if GlobalState.attack == 3:
+		var basicAttack1 = BasicAttack.instantiate()
+		basicAttack1.position = Vector2(global_position.x - $CollisionShape2D.shape.get_rect().size.x, global_position.y - 10)
+		owner.add_child(basicAttack1)
+		
+		var basicAttack2 = BasicAttack.instantiate()
+		basicAttack2.position = Vector2(global_position.x - $CollisionShape2D.shape.get_rect().size.x - 10, global_position.y )
+		owner.add_child(basicAttack2)
+		
+		var basicAttack3 = BasicAttack.instantiate()
+		basicAttack3.position = Vector2(global_position.x - $CollisionShape2D.shape.get_rect().size.x, global_position.y + 10)
+		owner.add_child(basicAttack3)
 		
 
 

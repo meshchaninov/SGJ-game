@@ -16,7 +16,7 @@ func start_fight():
 		splash()
 		
 	if(GlobalState.fox_meeting_number == 2):
-		var bullet_hell = rng.randi_range(1,20) == 10
+		var bullet_hell = rng.randi_range(1,20) == 10 # 5%
 		if(bullet_hell):
 			splash()
 			splashAdditional()

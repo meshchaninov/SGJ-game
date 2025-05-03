@@ -71,6 +71,7 @@ func _process(delta: float) -> void:
 func dummy_init():
 	GlobalState.fox_meeting_number += 2
 	GlobalState.fox_speed_level +=3
+	GlobalState.attack = 3
 
 func _on_timer_before_start_timeout() -> void:
 	print('START FIGHT')
