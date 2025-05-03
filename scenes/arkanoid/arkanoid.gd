@@ -59,6 +59,7 @@ func _on_hit_fox() -> void:
 	if(fox_health_to_win_stage >= foxHp):
 		foxHp = fox_health_to_win_stage
 		GlobalState.fox_hp = fox_health_to_win_stage
+		on_win()
 	
 	
 
