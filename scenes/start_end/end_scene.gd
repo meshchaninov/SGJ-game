@@ -2,6 +2,9 @@ extends Node2D
 
 func _ready() -> void:
 	if GlobalState.end_result == "bad":
+		if GlobalState.fox_meeting_number == 0:
+			$Kolobok.texture = "res://assets/sprites/kolobok/kolobok_dead.png"
+		else: $Kolobok.texture = "res://assets/sprites/kolobok/Kolob_implant_dead.png"
 		$EndButton.text = "Лол, ты сдох!!!"
 	elif GlobalState.end_result == "good":
 		$EndButton.text = "Молодец, рыжая пущена на шарф"
