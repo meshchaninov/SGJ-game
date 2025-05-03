@@ -116,6 +116,8 @@ func _render_text(chapter=1):
 				var select_text = "[code]" + selection["data"] + "[/code]\n"
 				rich_text_label_node.text += select_text
 				rich_text_label_node.visible_characters += len(selection["data"])
+			if GlobalState.romantic == 3:
+				current_chapter = 16
 			current_chapter = _find_next_elem(story_blocks, chapter)
 			selections_body = elem
 	
@@ -182,6 +184,8 @@ func _read_story():
 						var answer = ""
 						var skippable = false
 						var special = false
+						var romantic = false
+						var romantic_end = 16
 						for indx in parser.get_attribute_count():
 							var attribute_name = parser.get_attribute_name(indx)
 							if attribute_name == "backto":
@@ -198,6 +202,11 @@ func _read_story():
 							elif attribute_name == "special":
 								if parser.get_attribute_value(indx) == "true":
 									special = true
+							elif attribute_name == "romantic":
+								if parser.get_attribute_value(indx) == "true":
+									romantic = true
+							elif attribute_name == "romantic_end":
+								romantic_end = int(parser.get_attribute_value(indx))
 							
 						parser.read()
 						var data_value = parser.get_node_data()
@@ -209,6 +218,8 @@ func _read_story():
 							"answer": answer,
 							"skipable": skippable,
 							"special": special,
+							"romantic": romantic,
+							"romantic_end": romantic_end
 						})
 						parser.read()
 					else:
@@ -278,10 +289,11 @@ func _select_pressed(indx):
 			elif select["update"] == "attack":
 				attack_update = 1
 			elif select["update"] == "weaker_fox":
-				weaker_fox = 1
-			
+				weaker_fox = 1	
 			if not select["skipable"] and not select["special"]:
 				GlobalState.disable_happy_ending = true
+			if select["romantic"]:
+				GlobalState.romantic += 1
 			_update_game_state(select["back_to"], max_hp_update, speed_update, attack_update, weaker_fox)
 			GlobalState.chapter_answer = select["answer"]
 			return
@@ -324,6 +336,6 @@ func _on_fight_button_pressed() -> void:
 	GlobalState.fox_meeting_number += 1
 	if global_last_fight_now:
 		GlobalState.last_fight = true
-	#get_tree().reload_current_scene()
+	get_tree().reload_current_scene()
 
-	get_tree().change_scene_to_file("res://scenes/arkanoid/arkanoid.tscn")
+	#get_tree().change_scene_to_file("res://scenes/arkanoid/arkanoid.tscn")
