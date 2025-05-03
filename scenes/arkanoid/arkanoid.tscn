@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://ccbptpror07jw"]
+[gd_scene load_steps=14 format=3 uid="uid://ccbptpror07jw"]
 
 [ext_resource type="Script" uid="uid://bm6hg4rs56mnm" path="res://scenes/arkanoid/arkanoid.gd" id="1_hqduh"]
 [ext_resource type="PackedScene" uid="uid://o0of4k8n3p1h" path="res://scenes/arkanoid/kolobok.tscn" id="2_80qe2"]
+[ext_resource type="AudioStream" uid="uid://5oeqvjuel37d" path="res://assets/audio/gjt_1_1_7_main_fight_.mp3" id="3_lnxg1"]
 [ext_resource type="PackedScene" uid="uid://bvua485oi8jpu" path="res://scenes/arkanoid/fox.tscn" id="3_mgp1v"]
 [ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="4_m2p4e"]
 [ext_resource type="PackedScene" uid="uid://ba267iegwokdt" path="res://scenes/arkanoid/attacks/fox/FireSplashMaker.tscn" id="5_a7hot"]
@@ -25,6 +26,11 @@ script = ExtResource("1_hqduh")
 visibility_layer = 17
 z_index = 2
 position = Vector2(1011, 390)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("3_lnxg1")
+parameters/looping = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
