@@ -1,25 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cgw5hcvpgeno"]
+[gd_scene load_steps=3 format=3 uid="uid://cgw5hcvpgeno"]
 
 [ext_resource type="Script" uid="uid://co1xe2corc368" path="res://scenes/start_end/start_scene.gd" id="1_6nw75"]
-[ext_resource type="Texture2D" uid="uid://campmh7b15ah4" path="res://assets/TestBackground.png" id="1_gwo54"]
 [ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="2_1tqyn"]
 
 [node name="StartScene" type="Node2D"]
 script = ExtResource("1_6nw75")
-
-[node name="StartBackground" type="Parallax2D" parent="."]
-scroll_scale = Vector2(2, 2)
-repeat_size = Vector2(1280, 0)
-autoscroll = Vector2(128, 0)
-repeat_times = 2
-metadata/_edit_group_ = true
-
-[node name="StartBackgroudImg" type="Sprite2D" parent="StartBackground"]
-texture_repeat = 2
-position = Vector2(1280, 360)
-texture = ExtResource("1_gwo54")
-region_enabled = true
-region_rect = Rect2(1280, 720, 2560, 720)
 
 [node name="StartButton" type="Button" parent="."]
 anchors_preset = 8
