@@ -41,10 +41,26 @@ func _on_timer_before_start_timeout() -> void:
 func damage():
 	Hp-= 1
 	HpControl.text = 'Здоровьеце: ' + str(Hp)
+	if(Hp == 0):
+		on_lose()
 
 
 #signal hit_fox
 func _on_hit_fox() -> void:
 	foxHp-=1
 	$Control/ProgressBar.value = foxHp
-	print(foxHp)
+	
+	var stage_index = GlobalState.fox_meeting_number - 1
+	
+	var fox_health_to_win_stage = GlobalState.FOX_HP_STAGES[stage_index]
+	if(fox_health_to_win_stage >= foxHp):
+		foxHp = fox_health_to_win_stage
+		GlobalState.fox_hp = fox_health_to_win_stage
+	
+	
+
+func on_win() -> void:
+	print('WIN')
+
+func on_lose() -> void:
+	print('LOSE')
