@@ -9,4 +9,5 @@ script = ExtResource("1_xviac")
 [node name="Maker" type="Node2D" parent="."]
 
 [node name="Fox1" type="Sprite2D" parent="Maker"]
+visible = false
 texture = ExtResource("1_n2oj4")
