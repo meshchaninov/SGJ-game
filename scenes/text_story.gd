@@ -13,6 +13,11 @@ var select_1_button: Button
 var select_2_button: Button
 var select_3_button: Button
 var select_4_button: Button
+var fight_button: Button
+var end_button: Button
+
+var global_selections = {}
+var global_end_result = "happy"
 
 func _ready() -> void:
 	story_blocks = _read_story()
@@ -24,6 +29,8 @@ func _ready() -> void:
 	select_2_button = get_node("HBoxContainer/ColorRect/Select 2")
 	select_3_button = get_node("HBoxContainer/ColorRect/Select 3")
 	select_4_button = get_node("HBoxContainer/ColorRect/Select 4")
+	fight_button = get_node("HBoxContainer/ColorRect/FightButton")
+	end_button = get_node("HBoxContainer/ColorRect/EndButton")
 	_render_text(GlobalState.current_chapter)
 
 func _input(event: InputEvent) -> void:
@@ -37,27 +44,37 @@ func _find_next_elem(arr, prev_indx):
 			return prev
 		prev = arr[indx]
 	
-func _activate_buttons(selections):
+func _activate_buttons(selections={}, fight=false, end=false):
 	animate_select_buttons.play("FadeInButtons")
 	select_1_button.hide()
 	select_2_button.hide()
 	select_3_button.hide()
 	select_4_button.hide()
-	for select in selections["selections"]:
-		if select["indx"] == 1:
-			select_1_button.show()
-		elif select["indx"] == 2:
-			select_2_button.show()
-		elif select["indx"] == 3:
-			select_3_button.show()
-		elif select["indx"] == 4:
-			select_4_button.show()	
+	end_button.hide()
+	fight_button.hide()
+	if selections != {}:
+		for select in selections["selections"]:
+			if select["indx"] == 1:
+				select_1_button.show()
+			elif select["indx"] == 2:
+				select_2_button.show()
+			elif select["indx"] == 3:
+				select_3_button.show()
+			elif select["indx"] == 4:
+				select_4_button.show()
+	if fight:
+		fight_button.show()
+	if end:
+		end_button.show()
 
 func _render_text(chapter=1) -> void:
-	
 	rich_text_label_node.visible_characters = 0
 	
 	var body = story_blocks[chapter]
+	var is_end_button = false
+	var is_fight_button = false
+	var selections_body = {}
+	print("current chapter: ", body)
 	for elem in body:
 		if elem["type"] == "text":
 			rich_text_label_node.text += elem["text"] + "\n"
@@ -76,8 +93,15 @@ func _render_text(chapter=1) -> void:
 				rich_text_label_node.visible_characters += len(selection["data"])
 			rich_text_label_node.text += "\n"
 			current_chapter = _find_next_elem(story_blocks, chapter)
-			_activate_buttons(elem)
-			return
+			selections_body = elem
+	
+		elif elem["type"] == "end":
+			is_end_button = true
+			global_end_result = elem["result"]
+		elif elem["type"] == "fight":
+			is_fight_button = true
+	global_selections = selections_body
+	_activate_buttons(selections_body, is_fight_button, is_end_button)
 
 
 
@@ -142,7 +166,8 @@ func _read_story():
 						selections.append({
 							"indx": int(n_value),
 							"data": data_value,
-							"back_to": int(back_to)
+							"back_to": int(back_to),
+							"update": update
 						})
 						parser.read()
 					else:
@@ -151,28 +176,97 @@ func _read_story():
 					"type": "selections",
 					"selections": selections
 				})
-				
+			elif node_name == "end":
+				var result = "happy"
+				for indx in parser.get_attribute_count():
+					var attribute_name = parser.get_attribute_name(indx)
+					if attribute_name == "result":
+						var attribute_value = parser.get_attribute_value(indx)
+						if attribute_value == "bad":
+							result = "bad"
+						elif attribute_value == "happy":
+							result = "happy"
+						elif attribute_value == "romantic":
+							result = "romantic"
+				story_blocks[current_choose].append({
+					"type": "end",
+					"result": result
+				})
+			elif node_name == "fight":
+				var backto = 1
+				for indx in parser.get_attribute_count():
+					var attribute_name = parser.get_attribute_name(indx)
+					if attribute_name == "backto":
+						backto = parser.get_attribute_value(indx)
+				story_blocks[current_choose].append({
+					"type": "fight",
+					"back_to": int(backto)
+				})
 				
 	return story_blocks
 				
 			
+func _update_game_state(back_to, max_hp, speed, attack, weaker_fox) -> void:
+	GlobalState.current_chapter = back_to
+	GlobalState.max_hp += max_hp
+	GlobalState.speed += speed
+	GlobalState.attack += attack
+	GlobalState.fox_speed_level -= weaker_fox
 
-
+func _select_pressed(indx):
+	var max_hp_update = 0
+	var speed_update = 0
+	var attack_update = 0
+	var weaker_fox = 0
+	for select in global_selections["selections"]:
+		if select["indx"] == indx:
+			if select["update"] == "max_hp":
+				max_hp_update = 1
+			elif select["update"] == "speed":
+				speed_update = 1
+			elif select["update"] == "attack":
+				attack_update = 1
+			elif select["update"] == "weaker_fox":
+				weaker_fox = 1
+			_update_game_state(select["back_to"], max_hp_update, speed_update, attack_update, weaker_fox)
+			return
+	
 func _on_select_1_pressed() -> void:
 	animate_select_buttons.play("FadeOutButtons")
+	print(global_selections)
+	_select_pressed(1)
 	get_tree().reload_current_scene()
 
 
 func _on_select_2_pressed() -> void:
 	animate_select_buttons.play("FadeOutButtons")
+	_select_pressed(2)
 	get_tree().reload_current_scene()
 
 
 func _on_select_3_pressed() -> void:
 	animate_select_buttons.play("FadeOutButtons")
+	_select_pressed(3)
 	get_tree().reload_current_scene()
 
 
 func _on_select_4_pressed() -> void:
 	animate_select_buttons.play("FadeOutButtons")
+	_select_pressed(4)
+	get_tree().reload_current_scene()
+
+
+func _on_end_button_pressed() -> void:
+	animate_select_buttons.play("FadeOutButtons")
+
+	GlobalState.end_result = global_end_result
+	GlobalState.current_chapter = 1
+	get_tree().reload_current_scene()
+
+
+func _on_fight_button_pressed() -> void:
+	animate_select_buttons.play("FadeOutButtons")
+
+	GlobalState.fox_speed_level += 1
+	GlobalState.current_chapter = 1
 	get_tree().reload_current_scene()

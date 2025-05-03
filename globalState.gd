@@ -19,8 +19,11 @@ var max_hp = 2
 var speed = 1
 var attack = 1
 
-# Text Story
-var current_chapter = 2
+## Text Story
+var current_chapter = 1
+
+## Концовка "happy", "bad", "romantic"
+var end_result = "happy"
 
 # Подрубается при геймовере
 func reset():
@@ -30,4 +33,5 @@ func reset():
 	speed = 1
 	attack = 1
 	current_chapter = 1
+	end_result = "happy"
 	
