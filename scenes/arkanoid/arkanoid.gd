@@ -1,9 +1,6 @@
 extends Node2D
 class_name Arkanoid
 
-signal win
-signal loose
-
 @onready var kolobok = $Kolobok
 @onready var HpControl = $Control/HP
 @onready var fox = $Fox
@@ -12,6 +9,7 @@ signal loose
 func _ready() -> void:
 	dummy_init()
 	HpControl.text = 'Здоровьеце: ' + str(Hp)
+	start_scene()
 
 var Hp = GlobalState.max_hp
 var foxHp = GlobalState.fox_hp
@@ -99,11 +97,11 @@ func _on_hit_fox() -> void:
 
 func on_win() -> void:
 	stop_scene()
-	win.emit()
+	get_tree().change_scene_to_file("res://scenes/start_end/EndScene.tscn")
 
 func on_lose() -> void:
 	stop_scene()
-	loose.emit()
+	get_tree().change_scene_to_file("res://scenes/start_end/EndScene.tscn")
 
 
 var invincible = false
