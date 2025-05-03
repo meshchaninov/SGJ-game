@@ -26,6 +26,7 @@ var current_chapter = 1
 var chapter_answer = ""
 var last_fight = false
 var disable_happy_ending = false
+var romantic = 0
 
 ## Концовка "happy", "bad", "romantic"
 var end_result = "happy"
@@ -40,5 +41,6 @@ func reset():
 	current_chapter = 1
 	last_fight = false
 	disable_happy_ending = false
+	romantic = 0
 	end_result = "happy"
 	
