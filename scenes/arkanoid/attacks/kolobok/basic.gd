@@ -40,7 +40,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	
 
 func hit():
-	print('Hit in bullet')
 	end = true
 	$Hit.visible = true
 	var timer = Timer.new()
