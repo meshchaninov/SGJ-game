@@ -16,6 +16,8 @@ func _ready() -> void:
 
 var Hp = GlobalState.max_hp
 var foxHp = GlobalState.fox_hp
+
+var start_fight = false
 	
 # Подрубать перед появлением сцены
 func start_scene():
@@ -26,6 +28,10 @@ func start_scene():
 	$Kolobok.position = Vector2(1190, 310)
 	$TimerBeforeStart.start(3)
 	
+func stop_scene():
+	start_fight = false
+	kolobok.endFight()
+	$BattleManager.start_fight()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -52,7 +58,6 @@ func dummy_init():
 	GlobalState.fox_meeting_number += 1
 	GlobalState.fox_speed_level +=1
 
-var start_fight = false
 func _on_timer_before_start_timeout() -> void:
 	print('START FIGHT')
 	start_fight = true
@@ -82,9 +87,11 @@ func _on_hit_fox() -> void:
 	
 
 func on_win() -> void:
+	stop_scene()
 	win.emit()
 
 func on_lose() -> void:
+	stop_scene()
 	loose.emit()
 
 
