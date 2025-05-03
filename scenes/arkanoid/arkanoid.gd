@@ -109,10 +109,8 @@ func _on_hit_fox() -> void:
 func on_win() -> void:
 	stop_scene()
 	if GlobalState.last_fight:
-		GlobalState.end_result = "good"
-		get_tree().change_scene_to_file("res://scenes/start_end/EndScene.tscn")
-	else: 
-		get_tree().change_scene_to_file("res://scenes/TextStory.tscn")
+		GlobalState.end_result = "happy"
+	get_tree().change_scene_to_file("res://scenes/TextStory.tscn")
 
 func on_lose() -> void:
 	stop_scene()
