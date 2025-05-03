@@ -10,9 +10,9 @@ signal loose
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#dummy_init()
+	dummy_init()
 	HpControl.text = 'Здоровьеце: ' + str(Hp)
-	#start_scene()
+	start_scene()
 
 var Hp = GlobalState.max_hp
 var foxHp = GlobalState.fox_hp
@@ -95,5 +95,13 @@ func on_lose() -> void:
 	loose.emit()
 
 
+var invincible = false
 func _on_kolobok_damage() -> void:
-	damage()
+	if(!invincible):
+		invincible = true
+		$InvincibleTimer.start(1)
+		damage()
+
+
+func _on_invincible_timer_timeout() -> void:
+	invincible = false
