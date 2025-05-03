@@ -1,20 +1,37 @@
 extends CharacterBody2D
 
+class_name Kolobok
 
 const SPEED = 350.0
 const INERTION = 0.07
 
 var y_pressed_order = []
 var x_pressed_order = []
+var started_fight = false
 
 func startFight():
 	attack()
 	$Timer.start()
+	started_fight = true
+	
+func endFight():
+	$Timer.stop()
+	started_fight = false
+	
+var push = false
+
+func hit():
+	# Сделать мигание
+	pass
 
 func _physics_process(delta: float) -> void:
-	
+	if Input.is_action_just_pressed("left"):
+		print('LEFT')
+	if !started_fight:
+		return
 	var result_speed = GlobalState.speed * SPEED
 
+	
 	if Input.is_action_just_released("up"):
 		y_pressed_order.erase('up')
 	if Input.is_action_just_released("down"):
@@ -31,39 +48,54 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("down"):
 		y_pressed_order.push_front('down')
 		
-	if Input.is_action_just_pressed("left"):
-		x_pressed_order.push_front('left')
+	if !push:
+		if Input.is_action_just_pressed("left"):
+			x_pressed_order.push_front('left')
+			
+		if Input.is_action_just_pressed("right"):
+			x_pressed_order.push_front('right')
 		
-	if Input.is_action_just_pressed("right"):
-		x_pressed_order.push_front('right')
-		
-		
+
 	if y_pressed_order.size() != 0 &&  y_pressed_order[0] == 'up':
-		velocity.y = -result_speed
+		#velocity.y = -result_speed
+		velocity.y =  move_toward(velocity.y, -result_speed, SPEED * (1-INERTION))
 	if y_pressed_order.size() != 0 && y_pressed_order[0] == 'down':
-		velocity.y = result_speed
+		#velocity.y = result_speed
+		velocity.y =  move_toward(velocity.y, result_speed, SPEED * (1-INERTION))
 		
 	if x_pressed_order.size() != 0 && x_pressed_order[0] == 'left':
-		velocity.x = -result_speed
+		#velocity.x = -result_speed
+		velocity.x =  move_toward(velocity.x, -result_speed, SPEED * (1-INERTION))
 	if x_pressed_order.size() != 0 && x_pressed_order[0] == 'right':
-		velocity.x = result_speed
+		velocity.x =  move_toward(velocity.x, result_speed, SPEED * (1-INERTION))
 
 
 	if y_pressed_order.size() == 0:
 		velocity.y =  move_toward(velocity.y, 0, SPEED*INERTION)
-		
-	if x_pressed_order.size() == 0:
-		velocity.x =  move_toward(velocity.x, 0, SPEED*INERTION)
 
+	if !push && x_pressed_order.size() == 0:
+		velocity.x = move_toward(velocity.x, 0, SPEED*INERTION)
+	if push:
+		velocity.x = 2300
+		var timer = Timer.new()
+		timer.one_shot= true
+		timer.autostart = false
+		timer.wait_time = 0.2
+		timer.timeout.connect(func():
+			push = false
+			timer.queue_free()
+			)
+		add_child(timer)
+		timer.start()
 	move_and_slide()
 	
-var BasicAttack = preload("res://scenes/arkanoid/attacks/kolobok/basic.tscn")
+@onready var BasicAttack = preload("res://scenes/arkanoid/attacks/kolobok/basic.tscn")
 
 func attack():
 	if GlobalState.attack == 1:
-		var attack = BasicAttack.instantiate()
-		attack.position = Vector2(global_position.x - $CollisionShape2D.shape.get_rect().size.x, global_position.y)
-		owner.add_child(attack)
+		var basicAttack = BasicAttack.instantiate()
+		basicAttack.position = Vector2(global_position.x - $CollisionShape2D.shape.get_rect().size.x, global_position.y)
+		owner.add_child(basicAttack)
 		
 
 

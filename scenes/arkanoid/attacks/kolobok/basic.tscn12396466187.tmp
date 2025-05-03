@@ -90,6 +90,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_6xjja")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 position = Vector2(0.499999, 1)
 scale = Vector2(2.05, 1.2)
 
@@ -121,5 +122,4 @@ position = Vector2(-11.25, -1.375)
 scale = Vector2(0.578125, 1.03906)
 texture = ExtResource("5_hqeer")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
