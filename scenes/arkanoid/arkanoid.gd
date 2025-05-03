@@ -10,9 +10,9 @@ signal loose
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	dummy_init()
+	#dummy_init()
 	HpControl.text = 'Здоровьеце: ' + str(Hp)
-	start_scene()
+	#start_scene()
 
 var Hp = GlobalState.max_hp
 var foxHp = GlobalState.fox_hp
@@ -24,6 +24,7 @@ func start_scene():
 	fox.init()
 	$Control/ProgressBar.value = foxHp
 	$Kolobok.position = Vector2(1190, 310)
+	$TimerBeforeStart.start(3)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -53,6 +54,7 @@ func dummy_init():
 
 var start_fight = false
 func _on_timer_before_start_timeout() -> void:
+	print('START FIGHT')
 	start_fight = true
 	kolobok.startFight()
 	$BattleManager.start_fight()
