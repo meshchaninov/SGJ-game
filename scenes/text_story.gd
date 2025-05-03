@@ -31,6 +31,7 @@ func _ready() -> void:
 	select_4_button = get_node("HBoxContainer/ColorRect/Select 4")
 	fight_button = get_node("HBoxContainer/ColorRect/FightButton")
 	end_button = get_node("HBoxContainer/ColorRect/EndButton")
+	$AudioStreamPlayer2D.play()
 	_render_text(GlobalState.current_chapter)
 
 func _input(event: InputEvent) -> void:
