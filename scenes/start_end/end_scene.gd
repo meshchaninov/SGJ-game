@@ -15,4 +15,4 @@ func _ready() -> void:
 func _on_end_button_pressed() -> void:
 	if GlobalState.end_result != "bad":
 		get_tree().change_scene_to_file("res://scenes/TextStory.tscn")
-	get_tree().change_scene_to_file("res://scenes/start_end/StartScene.tscn")
+	else: get_tree().change_scene_to_file("res://scenes/start_end/StartScene.tscn")
