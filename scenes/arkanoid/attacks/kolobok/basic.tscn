@@ -113,7 +113,7 @@ position = Vector2(0, 2.54453)
 scale = Vector2(1.491, 3.59228)
 sprite_frames = SubResource("SpriteFrames_rvvul")
 autoplay = "default"
-frame_progress = 0.574738
+frame_progress = 0.661247
 
 [node name="Hit" type="Sprite2D" parent="."]
 visible = false
