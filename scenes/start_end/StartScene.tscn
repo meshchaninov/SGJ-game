@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgw5hcvpgeno"]
+[gd_scene load_steps=4 format=3 uid="uid://cgw5hcvpgeno"]
 
 [ext_resource type="Script" uid="uid://co1xe2corc368" path="res://scenes/start_end/start_scene.gd" id="1_6nw75"]
 [ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="2_1tqyn"]
+[ext_resource type="PackedScene" uid="uid://bklv4lk4jw435" path="res://scenes/background.tscn" id="3_6nw75"]
 
 [node name="StartScene" type="Node2D"]
 script = ExtResource("1_6nw75")
+
+[node name="Background" parent="." instance=ExtResource("3_6nw75")]
 
 [node name="StartButton" type="Button" parent="."]
 anchors_preset = 8
@@ -16,15 +19,15 @@ offset_right = 1280.0
 offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
-theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0.632225, 1.9493e-06, 3.36915e-07, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.631373, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.631373, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.631373, 0, 0, 1)
+theme_override_colors/font_color = Color(0.631373, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.631373, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0.631373, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_1tqyn")
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 65
 text = "Начать новую сказку"
 flat = true
 
