@@ -9,41 +9,34 @@
 <text speed="1"> И появился у них Колобок, глютенный бок. Говорит Колобку Бабка: «Колобок-Колобок, поди-ка сюда!»</text>
 <select>
 	<selection n="1" backto="2" update="max_hp">[1. Подойти] а1</selection>
-	<selection n="2" backto="3" update="speed">[2. Укатиться] а2</selection>
-	<selection n="3" backto="2" update="attack">[1. Подойти] а1</selection>
+	<selection n="2" backto="4" update="speed">[2. Укатиться] а2</selection>
+	<selection n="3" backto="3" update="attack">[1. Подойти] а1</selection>
 	<selection n="4" backto="3" update="weaker_fox">[2. Укатиться] а2</selection>
 </select>
-<text speed="1">Хуе мое</text>
+<end result="bad"></end>
 </choose>
 <choose n="2">
 <text>
 а1:
-Подкатился Колобок к Бабке, сел в неё и конец.
+Nomer 2
 </text>	
+<end result="happy"></end>
 </choose>
 <choose n="4">
 <text>
 а1:
-Подкатился Колобок к Бабке, сел в неё и конец.
-</text>	
+Nomer 4
+</text>
+<fight backto="1"></fight>
 </choose>
 <choose n="3">
-<text speed="1" backto="2">Жили-были старик со старухой, решили они испечь изделие [b]хлебобулочное.[/b]</text>
-
+<text speed="1" backto="2">Nomer 3 [b]хлебобулочное.[/b]</text>
 <text speed="1"> И появился у них Колобок, глютенный бок. Говорит Колобку Бабка: «Колобок-Колобок, поди-ка сюда!»</text>
 <select>
 	<selection n="1" backto="2">[1. Подойти] а1</selection>
 	<selection n="2" backto="3">[2. Укатиться] а2</selection>
 </select>
 <text speed="1">Хуе мое</text>
-<text speed="1">
-	
-
-
-
-
-
-
-</text>
+<end result="romantic"></end>
 </choose>
 </story>

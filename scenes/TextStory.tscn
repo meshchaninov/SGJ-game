@@ -145,6 +145,28 @@ offset_bottom = 70.0
 size_flags_horizontal = 0
 text = "Select 4"
 
+[node name="EndButton" type="Button" parent="HBoxContainer/ColorRect"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+offset_left = 905.0
+offset_top = 22.0
+offset_right = 1065.0
+offset_bottom = 72.0
+size_flags_horizontal = 0
+text = "End"
+
+[node name="FightButton" type="Button" parent="HBoxContainer/ColorRect"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = -1
+offset_left = 1091.0
+offset_top = 22.0
+offset_right = 1251.0
+offset_bottom = 72.0
+size_flags_horizontal = 0
+text = "Fight!"
+
 [node name="AnimateSelectButtons" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_01a32")
@@ -154,3 +176,5 @@ libraries = {
 [connection signal="pressed" from="HBoxContainer/ColorRect/Select 2" to="." method="_on_select_2_pressed"]
 [connection signal="pressed" from="HBoxContainer/ColorRect/Select 3" to="." method="_on_select_3_pressed"]
 [connection signal="pressed" from="HBoxContainer/ColorRect/Select 4" to="." method="_on_select_4_pressed"]
+[connection signal="pressed" from="HBoxContainer/ColorRect/EndButton" to="." method="_on_end_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/ColorRect/FightButton" to="." method="_on_fight_button_pressed"]
