@@ -23,9 +23,21 @@ func start_scene():
 	Hp = GlobalState.max_hp
 	foxHp = GlobalState.fox_hp
 	fox.init()
+	bg_init()
 	$Control/ProgressBar.value = foxHp
 	$Kolobok.position = Vector2(1190, 310)
+	$Kolobok.init()
 	$TimerBeforeStart.start(3)
+	
+func bg_init():
+	$Background/Background1.visible = false
+	
+	var peace_mode = false
+	if(peace_mode):
+		$Background/Background1.visible = true
+		return
+	if(GlobalState.fox_meeting_number == 1):
+		$Background/Background1.visible = true
 	
 func stop_scene():
 	start_fight = false

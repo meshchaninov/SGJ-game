@@ -21,7 +21,7 @@ script = ExtResource("1_hqduh")
 
 [node name="Kolobok" parent="." instance=ExtResource("2_80qe2")]
 visibility_layer = 17
-z_index = 1
+z_index = 2
 position = Vector2(1011, 390)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -68,6 +68,7 @@ MainScene = NodePath("..")
 KolobokfScene = NodePath("../Kolobok")
 
 [node name="Control" type="Control" parent="."]
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
@@ -122,6 +123,7 @@ text = "3"
 horizontal_alignment = 1
 
 [node name="BattleManager" type="Node2D" parent="."]
+z_index = 2
 script = ExtResource("5_tyt7n")
 
 [node name="FireSplashMakerUp" parent="BattleManager" node_paths=PackedStringArray("kolobok") instance=ExtResource("5_a7hot")]
@@ -135,6 +137,7 @@ kolobok = NodePath("../../Kolobok")
 [node name="Background" type="Node2D" parent="."]
 
 [node name="Background1" parent="Background" instance=ExtResource("7_x0k0o")]
+visible = false
 
 [node name="InvincibleTimer" type="Timer" parent="."]
 wait_time = 0.5

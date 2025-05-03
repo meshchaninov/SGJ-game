@@ -11,6 +11,7 @@ func _ready() -> void:
 func init() -> void:
 	$FoxVisual/First.visible = false
 	$FoxVisual/Second.visible = false
+
 	if GlobalState.fox_meeting_number == 1:
 		$FoxVisual/First.visible = true
 	else:
