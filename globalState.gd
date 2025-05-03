@@ -23,6 +23,8 @@ var attack = 1
 ## Text Story
 var current_chapter = 1
 var chapter_answer = ""
+var last_fight = false
+var disable_happy_ending = false
 
 ## Концовка "happy", "bad", "romantic"
 var end_result = "happy"
@@ -35,5 +37,7 @@ func reset():
 	speed = 1
 	attack = 1
 	current_chapter = 1
+	last_fight = false
+	disable_happy_ending = false
 	end_result = "happy"
 	

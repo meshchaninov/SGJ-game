@@ -7,8 +7,8 @@
 <text backto="2">Жили-были старик со старухой, решили они испечь изделие хлебобулочное.  И появился у них Колобок, глютенный бок. Говорит Колобку Бабка: «Колобок-Колобок, поди-ка сюда!»</text>
 
 <select>
-	<selection n="1" backto="2" update="max_hp" answer="">[1. Подойти]</selection>
-	<selection n="2" backto="3" update="speed">[2. Укатиться]</selection>
+	<selection n="1" backto="2" update="max_hp" answer="" special="true">[1. Подойти]</selection>
+	<selection n="2" backto="3" update="speed" special="true">[2. Укатиться]</selection>
 </select>
 </choose>
 
@@ -25,8 +25,8 @@
 И покатился Колобок, куда глаза глядят! Катится по дороге, а на встречу ему Заяц. 
 </text>
 <select>
-	<selection n="1" backto="4" update="max_hp" answer="Посмотрел недоверчиво Колобок на ушастого и покатился себе дальше, только Заяц его и видел!">[1. Прокатиться мимо]</selection>
-	<selection n="2" backto="8" update="speed">[2. Подкатиться к Зайцу]</selection>
+	<selection n="1" backto="8" update="speed">[1. Подкатиться к Зайцу]</selection>
+	<selection n="2" backto="4" skippable="true" update="max_hp" answer="Посмотрел недоверчиво Колобок на ушастого и покатился себе дальше, только Заяц его и видел!">[2. Прокатиться мимо]</selection>
 </select>
 </choose>
 
@@ -35,8 +35,8 @@
 Катится Колобок, катится, а на встречу ему Волк!
 </text>
 <select>
-	<selection n="1" backto="5" update="max_hp" answer="Вспомнил Колобок сказки, решил, что связываться с волками глупо, и покатился себе дальше, только Волк его и видел!">[1. Прокатиться мимо]</selection>
-	<selection n="2" backto="11" update="speed">[2. Подкатиться к Волку]</selection>
+	<selection n="1" backto="11" update="speed">[1. Подкатиться к Волку]</selection>
+	<selection n="2" backto="5" update="max_hp" skipable="true" answer="Вспомнил Колобок сказки, решил, что связываться с волками глупо, и покатился себе дальше, только Волк его и видел!">[2. Прокатиться мимо]</selection>
 </select>
 </choose>
 
@@ -46,8 +46,8 @@
 Катится Колобок, катится, а на встречу ему Медведь!
 </text>
 <select>
-	<selection n="1" backto="6" update="max_hp">[1. Прокатиться мимо]</selection>
-	<selection n="2" backto="14" update="speed">[2. Подкатиться к Медведю]</selection>
+	<selection n="1" backto="14" update="speed">[1. Подкатиться к Медведю]</selection>
+	<selection n="2" backto="6" update="max_hp" skipable="true">[2. Прокатиться мимо]</selection>
 </select>
 </choose>
 
@@ -55,12 +55,14 @@
 <text>
 Решил Колобок не тревожить Медведя и покатился дальше. Катится-катится, и тут Лиса. Да не простая Лиса, а с МАТЬ ЕГО ПУШКАМИ И ЛАЗЕРАМИ!!!
 </text>
-<fight backto="7"></fight>
+<fight backto="7" last="true"></fight>
 </choose>
 
 <choose n="7">
 <text>
 Одолел Колобок Лису и радостный покатился дальше. А то, до какой жизни он докатился, мы вам не расскажем, но жил он относительно долго и относительно счастливо!
+
+
 [center]Конец![/center]
 </text>
 <end result="happy"></end>
@@ -91,8 +93,8 @@
 Отбился кое-как Колобок от Лисы и покатился дальше. А на встречу ему Волк!
 </text>
 <select>
-	<selection n="1" backto="5" update="max_hp" answer="Вспомнил Колобок сказки, решил, что связываться с волками глупо, и покатился себе дальше, только Волк его и видел!">[1. Прокатиться мимо]</selection>
-	<selection n="2" backto="11" update="speed">[2. Подкатиться к Волку]</selection>
+	<selection n="1" backto="11" update="speed">[1. Подкатиться к Волку]</selection>
+	<selection n="2" backto="5" update="max_hp" skipable="true" answer="Вспомнил Колобок сказки, решил, что связываться с волками глупо, и покатился себе дальше, только Волк его и видел!">[2. Прокатиться мимо]</selection>
 </select>
 </choose>
 
@@ -123,8 +125,8 @@
 Отбился с трудом Колобок от Лисы, катится себе дальше, катится, а на встречу ему Медведь идёт!
 </text>
 <select>
-	<selection n="1" backto="6" update="max_hp" answer="Вспомнил Колобок сказки, решил, что связываться с волками глупо, и покатился себе дальше, только Волк его и видел!">[1. Прокатиться мимо]</selection>
-	<selection n="2" backto="14" update="speed">[2. Подкатиться к Медведю]</selection>
+	<selection n="1" backto="14" update="speed">[1. Подкатиться к Медведю]</selection>
+	<selection n="2" backto="6" update="max_hp" skipable="true" answer="Вспомнил Колобок сказки, решил, что связываться с волками глупо, и покатился себе дальше, только Волк его и видел!">[2. Прокатиться мимо]</selection>
 </select>
 </choose>
 
@@ -143,7 +145,7 @@
 <choose n="15">
 <text>
 Колобок и Лиса попали на космическую станцию. «Вот ты и попался, Колобок, теперь я точно тебя съем!!! Но до этого расстреляю и сожгу со всех сторон, ведь у меня появился ИМПЛАНТ-ДУБЛИКАТОР!!!», воскликнула Лиса и ринулась на Колобка.</text>
-<fight backto="7"></fight>
+<fight backto="7" last="true"></fight>
 </choose>
 
 

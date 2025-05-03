@@ -20,6 +20,7 @@ var end_button: TextureButton
 var global_selections = {}
 var global_end_result = "happy"
 var global_fight_chapter = 1
+var global_last_fight_now = false
 
 func _ready() -> void:
 	print("Current chapter: ", GlobalState.current_chapter)
@@ -46,7 +47,7 @@ func _find_next_elem(arr, prev_indx):
 			return prev
 		prev = arr[indx]
 	
-func _activate_buttons(selections={}, fight=false, end=false):
+func _activate_buttons(selections={}, fight=false, last_fight=false, end=false):
 	animate_select_buttons.play("FadeInButtons")
 	select_1_button.hide()
 	select_2_button.hide()
@@ -66,6 +67,8 @@ func _activate_buttons(selections={}, fight=false, end=false):
 				select_4_button.show()
 	if fight:
 		fight_button.show()
+		if last_fight:
+			global_last_fight_now = true
 	if end:
 		end_button.show()
 	
@@ -74,8 +77,10 @@ func _render_text(chapter=1):
 	rich_text_label_node.visible_characters = 0
 	
 	var body = story_blocks[chapter]
+	print(body)
 	var is_end_button = false
 	var is_fight_button = false
+	var is_last_fight = false
 	var selections_body = {}
 	if GlobalState.chapter_answer != "":
 		rich_text_label_node.text += GlobalState.chapter_answer + "\n"
@@ -100,6 +105,9 @@ func _render_text(chapter=1):
 		elif elem["type"] == "selections":
 			rich_text_label_node.text += "\n"
 			for selection in elem["selections"]:
+				print(GlobalState.disable_happy_ending, selection["skipable"])
+				if selection["skipable"] and GlobalState.disable_happy_ending:
+					continue
 				var select_text = "[code]" + selection["data"] + "[/code]\n"
 				rich_text_label_node.text += select_text
 				rich_text_label_node.visible_characters += len(selection["data"])
@@ -111,10 +119,12 @@ func _render_text(chapter=1):
 			global_end_result = elem["result"]
 		elif elem["type"] == "fight":
 			is_fight_button = true
+			is_last_fight = elem["last_fight"]
 			global_fight_chapter = elem["back_to"]
 	rich_text_label_node.visible_characters += 10000 # Woops kostil
 	global_selections = selections_body
-	_activate_buttons(selections_body, is_fight_button, is_end_button)
+	
+	_activate_buttons(selections_body, is_fight_button, is_last_fight, is_end_button)
 
 
 
@@ -165,6 +175,8 @@ func _read_story():
 						var n_value = ""
 						var update = ""
 						var answer = ""
+						var skippable = false
+						var special = false
 						for indx in parser.get_attribute_count():
 							var attribute_name = parser.get_attribute_name(indx)
 							if attribute_name == "backto":
@@ -175,6 +187,12 @@ func _read_story():
 								update = parser.get_attribute_value(indx)
 							elif attribute_name == "answer":
 								answer = parser.get_attribute_value(indx)
+							elif attribute_name == "skipable":
+								if parser.get_attribute_value(indx) == "true":
+									skippable = true
+							elif attribute_name == "special":
+								if parser.get_attribute_value(indx) == "true":
+									special = true
 							
 						parser.read()
 						var data_value = parser.get_node_data()
@@ -184,6 +202,8 @@ func _read_story():
 							"back_to": int(back_to),
 							"update": update,
 							"answer": answer,
+							"skipable": skippable,
+							"special": special,
 						})
 						parser.read()
 					else:
@@ -210,13 +230,18 @@ func _read_story():
 				})
 			elif node_name == "fight":
 				var backto = 1
+				var last_fight = false
 				for indx in parser.get_attribute_count():
 					var attribute_name = parser.get_attribute_name(indx)
 					if attribute_name == "backto":
 						backto = parser.get_attribute_value(indx)
+					elif attribute_name == "last":
+						if parser.get_attribute_value(indx) == "true":
+							last_fight = true
 				story_blocks[current_choose].append({
 					"type": "fight",
-					"back_to": int(backto)
+					"back_to": int(backto),
+					"last_fight": last_fight
 				})
 				
 	return story_blocks
@@ -230,6 +255,7 @@ func _update_game_state(back_to, max_hp, speed, attack, weaker_fox) -> void:
 	GlobalState.fox_speed_level -= weaker_fox
 
 func _select_pressed(indx):
+	print("disable happy ",GlobalState.disable_happy_ending)
 	var max_hp_update = 0
 	var speed_update = 0
 	var attack_update = 0
@@ -244,6 +270,9 @@ func _select_pressed(indx):
 				attack_update = 1
 			elif select["update"] == "weaker_fox":
 				weaker_fox = 1
+			
+			if select["skipable"] and not select["special"]:
+				GlobalState.disable_happy_ending = true
 			_update_game_state(select["back_to"], max_hp_update, speed_update, attack_update, weaker_fox)
 			GlobalState.chapter_answer = select["answer"]
 			return
@@ -279,8 +308,11 @@ func _on_end_button_pressed() -> void:
 
 
 func _on_fight_button_pressed() -> void:
+	print(global_last_fight_now)
+
 	GlobalState.chapter_answer = ""
 	GlobalState.fox_speed_level += 1
 	GlobalState.current_chapter = global_fight_chapter
+	GlobalState.last_fight = global_last_fight_now
 	get_tree().reload_current_scene()
 	StartFight.emit()
