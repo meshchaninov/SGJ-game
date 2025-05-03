@@ -12,6 +12,7 @@ func _ready() -> void:
 	# TODO: это заглушки, стереть когда всё готово
 	#dummy_init()
 	start_scene()
+	
 
 var Hp = GlobalState.max_hp
 var foxHp = GlobalState.fox_hp
@@ -29,6 +30,8 @@ func start_scene():
 	$Kolobok.position = Vector2(1190, 310)
 	$Kolobok.init()
 	$TimerBeforeStart.start(3)
+	#$AudioStreamPlayer2D.loo
+	$AudioStreamPlayer2D.play()
 	
 func bg_init():
 	$Background/Background1.visible = false
