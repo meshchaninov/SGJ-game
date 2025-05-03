@@ -256,7 +256,7 @@ func _update_game_state(back_to, max_hp, speed, attack, weaker_fox) -> void:
 	print("max_hp: ", max_hp)
 	print("speed: ", speed)
 	print("attack: ", attack)
-	print("weaker_fox: ", weaker_fox)
+	print("weaker_fox: ", weaker_fox  )
 	GlobalState.current_chapter = back_to
 	GlobalState.max_hp += max_hp
 	GlobalState.speed += speed
@@ -307,7 +307,7 @@ func _on_select_4_pressed() -> void:
 	_select_pressed(4)
 	get_tree().reload_current_scene()
 
-
+ 
 func _on_end_button_pressed() -> void:
 
 	GlobalState.end_result = global_end_result
@@ -321,4 +321,4 @@ func _on_fight_button_pressed() -> void:
 	GlobalState.chapter_answer = ""
 	GlobalState.fox_speed_level += 1
 	GlobalState.current_chapter = global_fight_chapter
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://scenes/arkanoid/arkanoid.tscn")
