@@ -1,6 +1,9 @@
 extends Node2D
 class_name Arkanoid
 
+signal win
+signal loose
+
 @onready var kolobok = $Kolobok
 @onready var HpControl = $Control/HP
 @onready var fox = $Fox
@@ -60,7 +63,7 @@ func _on_hit_fox() -> void:
 	
 
 func on_win() -> void:
-	print('WIN')
+	win.emit()
 
 func on_lose() -> void:
-	print('LOSE')
+	loose.emit()
