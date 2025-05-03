@@ -1,6 +1,4 @@
 extends Node2D
 
-signal start
-
 func _on_start_button_pressed() -> void:
-	start.emit()
+	get_tree().change_scene_to_file("res://scenes/TextStory.tscn")

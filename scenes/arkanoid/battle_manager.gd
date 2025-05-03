@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 
 
 func start_fight():
+	var long_splash = false
 	if(GlobalState.fox_meeting_number == 1):
 		splash()
 		
@@ -26,7 +27,32 @@ func start_fight():
 				splash()
 			else:
 				splashAdditional()
+				
+	if(GlobalState.fox_meeting_number == 3):
+		var bullet_hell = rng.randi_range(1,20) == 10 # 5%
+		var fast_result =  rng.randi_range(1,2) == 1
+		var degree = 90
+		if(fast_result):
+			degree = 170
+		var time = 2
+		if(fast_result):
+			long_splash = true
+			time = 4
+		
+		
+		if(bullet_hell):
+			splash()
+			splashAdditional(degree, time)
+		else:
+			var ordinary = rng.randi_range(1,2) == 2
+			if(ordinary):
+				splash()
+			else:
+				splashAdditional(degree, time)
+				
 	var wait_time = rng.randf_range(2.1, 4)
+	if(long_splash):
+		rng.randf_range(5.1, 6)
 	var timer = Timer.new()
 	timer.one_shot= true
 	timer.autostart = false
@@ -40,7 +66,7 @@ func start_fight():
 	timer.start()
 	
 var rng = RandomNumberGenerator.new()
-func splash():
+func splash(value = 90.0):
 	var both = rng.randi_range(1,2) == 2
 	print(splash)
 	if (both):
@@ -53,14 +79,19 @@ func splash():
 		else:
 			$FireSplashMakerDown.start_fire_default(-100.0)
 
-func splashAdditional():
+func splashAdditional(value = 90.0, time= 2.0):
 	var both = rng.randi_range(1,2) == 2
+	
+	print('TEST ' + str(value) + ' ' + str(time))
 	if (both):
-		$FireSplashMakerUp2.start_fire_default(90.0)
-		$FireSplashMakerDown2.start_fire_default(-100.0)
+		$FireSplashMakerUp2.start_fire_default(value, time)
+		$FireSplashMakerDown2.start_fire_default(-value-10, time)
 	else:
-		var rand_result = rng.randi_range(1,2)
-		if(rand_result == 1):
-			$FireSplashMakerUp2.start_fire_default(90.0)
+		var rand_result = rng.randi_range(1,2) == 1
+		#var fast_result =  rng.randi_range(1,2) == 1
+		if(rand_result):
+			$FireSplashMakerUp2.start_fire_default(value, time)
 		else:
-			$FireSplashMakerDown2.start_fire_default(-100.0)
+			print(value, time)
+			$FireSplashMakerDown2.start_fire_default(-value-10, time)
+			

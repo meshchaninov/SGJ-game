@@ -12,8 +12,9 @@ extends Node
 var fox_meeting_number = 0
 # Тоже повышается после каждого выбора
 var fox_speed_level = 0
-var fox_hp = 600
-const FOX_HP_STAGES = [500, 300, 0]
+const MAX_FOX_HP = 60
+var fox_hp = MAX_FOX_HP
+const FOX_HP_STAGES = [50, 30, 0]
 
 ## Player
 var max_hp = 2
