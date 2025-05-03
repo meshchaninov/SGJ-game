@@ -22,6 +22,7 @@ var attack = 1
 
 ## Text Story
 var current_chapter = 1
+var chapter_answer = ""
 
 ## Концовка "happy", "bad", "romantic"
 var end_result = "happy"
