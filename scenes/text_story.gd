@@ -1,6 +1,7 @@
 extends Control
 
 signal StartFight
+signal end_signal
 
 var story_blocks = {}
 var current_chapter = 1
@@ -261,7 +262,7 @@ func _on_end_button_pressed() -> void:
 
 	GlobalState.end_result = global_end_result
 	GlobalState.current_chapter = 1
-	get_tree().reload_current_scene()
+	end_signal.emit()
 
 
 func _on_fight_button_pressed() -> void:
@@ -269,4 +270,4 @@ func _on_fight_button_pressed() -> void:
 
 	GlobalState.fox_speed_level += 1
 	GlobalState.current_chapter = 1
-	get_tree().reload_current_scene()
+	StartFight.emit()
