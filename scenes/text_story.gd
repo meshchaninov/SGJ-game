@@ -331,11 +331,8 @@ func _on_end_button_pressed() -> void:
 
 
 func _on_fight_button_pressed() -> void:
-	
-
 	GlobalState.chapter_answer = ""
 	GlobalState.fox_speed_level += 1
-	GlobalState.fox_meeting_number += 1
 	GlobalState.current_chapter = global_fight_chapter
 	GlobalState.fox_meeting_number += 1
 	if global_last_fight_now:
