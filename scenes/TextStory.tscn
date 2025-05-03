@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://byp1bj4o4whjp" path="res://scenes/text_story.gd" id="1_5af7w"]
 [ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="1_uc2jp"]
+[ext_resource type="Texture2D" uid="uid://bkedc0x8rsvdd" path="res://assets/parchment.png" id="2_b03a7"]
 [ext_resource type="FontFile" uid="uid://cbgmd2jhm2xhx" path="res://assets/fonts/clacon2.ttf" id="2_pp542"]
-[ext_resource type="Texture2D" uid="uid://lap2tsyw27cp" path="res://parchment.png" id="4_apqcp"]
 [ext_resource type="Texture2D" uid="uid://bfl5bd10mdyem" path="res://assets/button_metal.png" id="5_01a32"]
 [ext_resource type="Texture2D" uid="uid://bngkpd51lefyv" path="res://assets/bakcround_metal.png" id="5_b03a7"]
 [ext_resource type="Texture2D" uid="uid://csgot2xgm6jht" path="res://assets/button_metal_pressed.png" id="6_c8osx"]
@@ -86,7 +86,7 @@ offset_right = 123.0
 offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_apqcp")
+texture = ExtResource("2_b03a7")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_direction = 2
