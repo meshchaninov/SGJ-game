@@ -12,7 +12,6 @@ signal loose
 func _ready() -> void:
 	dummy_init()
 	HpControl.text = 'Здоровьеце: ' + str(Hp)
-	start_scene()
 
 var Hp = GlobalState.max_hp
 var foxHp = GlobalState.fox_hp

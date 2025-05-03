@@ -274,7 +274,6 @@ func _on_end_button_pressed() -> void:
 
 	GlobalState.end_result = global_end_result
 	GlobalState.current_chapter = 1
-	get_tree().reload_current_scene()
 	end_signal.emit()
 
 
@@ -282,5 +281,4 @@ func _on_fight_button_pressed() -> void:
 	GlobalState.chapter_answer = ""
 	GlobalState.fox_speed_level += 1
 	GlobalState.current_chapter = global_fight_chapter
-	get_tree().reload_current_scene()
 	StartFight.emit()

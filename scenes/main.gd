@@ -1,13 +1,14 @@
 extends Node2D
 
 func _ready() -> void:
+	$StartScene.hide()
+	$EndScene.hide()
+	$TextStory.hide()
+	$Arcanoid.hide()
 	new_game()
 
 func new_game():
 	$StartScene.show()
-	$EndScene.hide()
-	$TextStory.hide()
-	$Arcanoid.hide()
 
 func _on_start_scene_start() -> void:
 	$StartScene.hide()
@@ -19,6 +20,7 @@ func _on_end_scene_end_game() -> void:
 func _on_text_story_start_fight() -> void:
 	$TextStory.hide()
 	$Arcanoid.show()
+	$Arcanoid.start_scene()
 
 func _on_text_story_end_signal() -> void:
 	$TextStory.hide()
