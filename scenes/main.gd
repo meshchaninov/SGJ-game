@@ -22,6 +22,7 @@ func _on_text_story_start_fight() -> void:
 
 func _on_text_story_end_signal() -> void:
 	$TextStory.hide()
+	new_game()
 
 func _on_arcanoid_loose() -> void:
 	$EndScene.show()

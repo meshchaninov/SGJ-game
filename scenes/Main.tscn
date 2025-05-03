@@ -9,12 +9,6 @@
 [node name="Main" type="Node2D"]
 script = ExtResource("1_elqb8")
 
-[node name="StartScene" parent="." instance=ExtResource("3_vcsgt")]
-visible = false
-
-[node name="EndScene" parent="." instance=ExtResource("4_c01mt")]
-visible = false
-
 [node name="TextStory" parent="." instance=ExtResource("2_rarhs")]
 anchors_preset = 12
 anchor_top = 1.0
@@ -24,10 +18,16 @@ offset_right = 640.0
 offset_bottom = 360.0
 grow_vertical = 0
 
+[node name="StartScene" parent="." instance=ExtResource("3_vcsgt")]
+visible = false
+
+[node name="EndScene" parent="." instance=ExtResource("4_c01mt")]
+visible = false
+
 [node name="Arcanoid" parent="." instance=ExtResource("5_vcsgt")]
 
-[connection signal="start" from="StartScene" to="." method="_on_start_scene_start"]
 [connection signal="StartFight" from="TextStory" to="." method="_on_text_story_start_fight"]
 [connection signal="end_signal" from="TextStory" to="." method="_on_text_story_end_signal"]
+[connection signal="start" from="StartScene" to="." method="_on_start_scene_start"]
 [connection signal="loose" from="Arcanoid" to="." method="_on_arcanoid_loose"]
 [connection signal="win" from="Arcanoid" to="." method="_on_arcanoid_win"]
