@@ -10,12 +10,12 @@ var skip_visible_char = false
 var rich_text_label_node: RichTextLabel
 var buttons_container: HBoxContainer
 var animate_select_buttons: AnimationPlayer
-var select_1_button: Button
-var select_2_button: Button
-var select_3_button: Button
-var select_4_button: Button
-var fight_button: Button
-var end_button: Button
+var select_1_button: TextureButton
+var select_2_button: TextureButton
+var select_3_button: TextureButton
+var select_4_button: TextureButton
+var fight_button: TextureButton
+var end_button: TextureButton
 
 var global_selections = {}
 var global_end_result = "happy"
@@ -92,7 +92,7 @@ func _render_text(chapter=1) -> void:
 				var select_text = "[code]" + selection["data"] + "[/code]\n"
 				rich_text_label_node.text += select_text
 				rich_text_label_node.visible_characters += len(selection["data"])
-			rich_text_label_node.text += "\n"
+			rich_text_label_node.text += "\n\n\n\n"
 			current_chapter = _find_next_elem(story_blocks, chapter)
 			selections_body = elem
 	
@@ -258,7 +258,6 @@ func _on_select_4_pressed() -> void:
 
 
 func _on_end_button_pressed() -> void:
-	animate_select_buttons.play("FadeOutButtons")
 
 	GlobalState.end_result = global_end_result
 	GlobalState.current_chapter = 1
@@ -266,7 +265,6 @@ func _on_end_button_pressed() -> void:
 
 
 func _on_fight_button_pressed() -> void:
-	animate_select_buttons.play("FadeOutButtons")
 
 	GlobalState.fox_speed_level += 1
 	GlobalState.current_chapter = 1

@@ -4,9 +4,9 @@
 <title>КОЛОБОРКАНОИД</title>
 
 <choose n="1">
-<text speed="1" backto="2">Жили-были старик со старухой, решили они испечь изделие [b]хлебобулочное.[/b]</text>
+<text speed="1" backto="2">Жили-были старик со старухой, решили они испечь изделие хлебобулочное.  И появился у них Колобок, глютенный бок. Говорит Колобку Бабка: [i]«Колобок-Колобок, поди-ка сюда!»[/i]</text>
 
-<text speed="1"> И появился у них Колобок, глютенный бок. Говорит Колобку Бабка: «Колобок-Колобок, поди-ка сюда!»</text>
+<text speed="1"> И появился у них Колобок, глютенный бок. Говорит Колобку Бабка: «Колобок-Колобок, поди-ка сюда!» Lorem ipsum dolor sit amet, consectetur adipisicing, elit. Magni debitis fugiat, et dolores ad nesciunt blanditiis velit quisquam impedit ullam recusandae nostrum amet distinctio sit ea eveniet. Libero, quasi, rerum! Lorem, ipsum dolor, sit amet consectetur adipisicing elit. Minima sint incidunt harum distinctio voluptatum corrupti obcaecati culpa consequuntur praesentium, exercitationem, eos animi officiis commodi aliquid magni, tempore sit cumque atque. Lorem ipsum dolor sit, amet consectetur, adipisicing elit. Iusto distinctio facilis assumenda, facere tempore commodi quidem labore laudantium exercitationem fugiat quae nostrum expedita accusamus aut maxime, quos animi. Reprehenderit, obcaecati!</text>
 <select>
 	<selection n="1" backto="2" update="max_hp">[1. Подойти] а1</selection>
 	<selection n="2" backto="4" update="speed">[2. Укатиться] а2</selection>
@@ -14,6 +14,7 @@
 	<selection n="4" backto="3" update="weaker_fox">[2. Укатиться] а2</selection>
 </select>
 <end result="bad"></end>
+<fight backto="1"></fight>
 </choose>
 <choose n="2">
 <text>
@@ -36,7 +37,6 @@ Nomer 4
 	<selection n="1" backto="2">[1. Подойти] а1</selection>
 	<selection n="2" backto="3">[2. Укатиться] а2</selection>
 </select>
-<text speed="1">Хуе мое</text>
 <end result="romantic"></end>
 </choose>
 </story>
