@@ -59,6 +59,7 @@ visible = false
 stream = ExtResource("5_547i1")
 
 [node name="Love" type="AudioStreamPlayer2D" parent="."]
+visible = false
 stream = ExtResource("6_547i1")
 parameters/looping = true
 
