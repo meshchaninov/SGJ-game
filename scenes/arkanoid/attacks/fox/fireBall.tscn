@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://c41t8ur6noxfr"]
+
+[ext_resource type="Script" uid="uid://btk0eo1cldxxv" path="res://scenes/arkanoid/attacks/fox/fire_ball.gd" id="1_2ri0q"]
+[ext_resource type="Texture2D" uid="uid://jb7itygyss7n" path="res://assets/sprites/fox/fox_fireball.png" id="1_iqtnv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ri0q"]
+atlas = ExtResource("1_iqtnv")
+region = Rect2(0, 0, 66, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8h1w"]
+atlas = ExtResource("1_iqtnv")
+region = Rect2(66, 0, 66, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thvj0"]
+atlas = ExtResource("1_iqtnv")
+region = Rect2(132, 0, 66, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmpw0"]
+atlas = ExtResource("1_iqtnv")
+region = Rect2(198, 0, 66, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n3m7"]
+atlas = ExtResource("1_iqtnv")
+region = Rect2(264, 0, 66, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_posp8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ri0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8h1w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thvj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vmpw0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n3m7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 40.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b63qm"]
+radius = 12.0416
+
+[node name="FireBall" type="Area2D"]
+script = ExtResource("1_2ri0q")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-16, 1)
+scale = Vector2(1.375, 1.375)
+sprite_frames = SubResource("SpriteFrames_posp8")
+autoplay = "default"
+frame_progress = 0.057724
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_b63qm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0.499999, 1)
+scale = Vector2(2.05, 1.2)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

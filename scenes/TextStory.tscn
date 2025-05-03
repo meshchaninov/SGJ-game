@@ -74,8 +74,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5af7w")
+metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1548, 951)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,6 +121,7 @@ bbcode_enabled = true
 scroll_following = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1280, 100)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -129,6 +132,7 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="ColorRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(1280, 100)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("5_b03a7")
