@@ -55,12 +55,20 @@ func _activate_buttons(selections={}, fight=false, last_fight=false, end=false):
 	if selections != {}:
 		for select in selections["selections"]:
 			if select["indx"] == 1:
+				if select["skipable"] and GlobalState.disable_happy_ending:
+					continue
 				select_1_button.show()
 			elif select["indx"] == 2:
+				if select["skipable"] and GlobalState.disable_happy_ending:
+					continue
 				select_2_button.show()
 			elif select["indx"] == 3:
+				if select["skipable"] and GlobalState.disable_happy_ending:
+					continue
 				select_3_button.show()
 			elif select["indx"] == 4:
+				if select["skipable"] and GlobalState.disable_happy_ending:
+					continue
 				select_4_button.show()
 	if fight:
 		fight_button.show()
@@ -245,6 +253,10 @@ func _read_story():
 				
 			
 func _update_game_state(back_to, max_hp, speed, attack, weaker_fox) -> void:
+	print("max_hp: ", max_hp)
+	print("speed: ", speed)
+	print("attack: ", attack)
+	print("weaker_fox: ", weaker_fox)
 	GlobalState.current_chapter = back_to
 	GlobalState.max_hp += max_hp
 	GlobalState.speed += speed
@@ -268,7 +280,7 @@ func _select_pressed(indx):
 			elif select["update"] == "weaker_fox":
 				weaker_fox = 1
 			
-			if select["skipable"] and not select["special"]:
+			if not select["skipable"] and not select["special"]:
 				GlobalState.disable_happy_ending = true
 			_update_game_state(select["back_to"], max_hp_update, speed_update, attack_update, weaker_fox)
 			GlobalState.chapter_answer = select["answer"]
@@ -309,4 +321,4 @@ func _on_fight_button_pressed() -> void:
 	GlobalState.chapter_answer = ""
 	GlobalState.fox_speed_level += 1
 	GlobalState.current_chapter = global_fight_chapter
-	get_tree().change_scene_to_file("res://scenes/arkanoid/arkanoid.tscn")
+	get_tree().reload_current_scene()
