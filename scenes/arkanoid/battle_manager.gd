@@ -12,9 +12,20 @@ func _process(delta: float) -> void:
 
 
 func start_fight():
-	if(GlobalState.fox_meeting_number ==1):
-		var both = rng.randi_range(1,2) == 2
-		splash(both)
+	if(GlobalState.fox_meeting_number == 1):
+		splash()
+		
+	if(GlobalState.fox_meeting_number == 2):
+		var bullet_hell = rng.randi_range(1,20) == 10
+		if(bullet_hell):
+			splash()
+			splashAdditional()
+		else:
+			var ordinary = rng.randi_range(1,2) == 2
+			if(ordinary):
+				splash()
+			else:
+				splashAdditional()
 	var wait_time = rng.randf_range(2.1, 4)
 	var timer = Timer.new()
 	timer.one_shot= true
@@ -29,7 +40,8 @@ func start_fight():
 	timer.start()
 	
 var rng = RandomNumberGenerator.new()
-func splash(both = false):
+func splash():
+	var both = rng.randi_range(1,2) == 2
 	print(splash)
 	if (both):
 		$FireSplashMakerUp.start_fire_default(90.0)
@@ -40,3 +52,15 @@ func splash(both = false):
 			$FireSplashMakerUp.start_fire_default(90.0)
 		else:
 			$FireSplashMakerDown.start_fire_default(-100.0)
+
+func splashAdditional():
+	var both = rng.randi_range(1,2) == 2
+	if (both):
+		$FireSplashMakerUp2.start_fire_default(90.0)
+		$FireSplashMakerDown2.start_fire_default(-100.0)
+	else:
+		var rand_result = rng.randi_range(1,2)
+		if(rand_result == 1):
+			$FireSplashMakerUp2.start_fire_default(90.0)
+		else:
+			$FireSplashMakerDown2.start_fire_default(-100.0)

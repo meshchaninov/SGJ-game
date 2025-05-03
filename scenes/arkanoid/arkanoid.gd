@@ -10,8 +10,10 @@ signal loose
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	HpControl.text = 'Здоровьице: ' + str(Hp)
+	
+	# TODO: это заглушки, стереть когда всё готово
 	dummy_init()
-	HpControl.text = 'Здоровьеце: ' + str(Hp)
 	start_scene()
 
 var Hp = GlobalState.max_hp
@@ -67,8 +69,8 @@ func _process(delta: float) -> void:
 	
 # Заглушка чтобы лиса имела силу какую-то
 func dummy_init():
-	GlobalState.fox_meeting_number += 1
-	GlobalState.fox_speed_level +=1
+	GlobalState.fox_meeting_number += 2
+	GlobalState.fox_speed_level +=3
 
 func _on_timer_before_start_timeout() -> void:
 	print('START FIGHT')
@@ -79,7 +81,7 @@ func _on_timer_before_start_timeout() -> void:
 
 func damage():
 	Hp-= 1
-	HpControl.text = 'Здоровьеце: ' + str(Hp)
+	HpControl.text = 'Здоровьице: ' + str(Hp)
 	if(Hp == 0):
 		on_lose()
 
