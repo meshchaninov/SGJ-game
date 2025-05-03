@@ -3,13 +3,16 @@ extends Node2D
 func _ready() -> void:
 	if GlobalState.end_result == "bad":
 		if GlobalState.fox_meeting_number == 0:
+			$Dead.play()
 			$Kolobok.texture = load("res://assets/sprites/kolobok/kolobok_dead.png")
 		else: $Kolobok.texture = load("res://assets/sprites/kolobok/Kolob_implant_dead.png")
 		$EndButton.text = "Лол, ты сдох!!!"
 	elif GlobalState.end_result == "happy":
+		$Good.play()
 		$Kolobok.texture = load("res://assets/sprites/kolobok/Kolob_implant.png")
 		$EndButton.text = "Молодец, рыжая пущена на шарф"
 	elif GlobalState.end_result == "romantic":
+		$Love.play()
 		$EndButton.text = "И жили они долго и счастливо"
 
 func _on_end_button_pressed() -> void:

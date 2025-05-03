@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dydryso2p67aw"]
+[gd_scene load_steps=7 format=3 uid="uid://dydryso2p67aw"]
 
 [ext_resource type="Script" uid="uid://loxysdd8i50g" path="res://scenes/start_end/end_scene.gd" id="1_5wdkr"]
 [ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="1_7cl22"]
 [ext_resource type="Texture2D" uid="uid://bbyutmbgk2bs6" path="res://assets/sprites/kolobok/kolobok.png" id="3_5lhfv"]
+[ext_resource type="AudioStream" uid="uid://fkkir2gywks3" path="res://assets/audio/gjt_1_1_9(ending_death).mp3" id="4_bw4ry"]
+[ext_resource type="AudioStream" uid="uid://bhok2xv87lfi0" path="res://assets/audio/gjt_1_1_9(ending_happy).mp3" id="5_547i1"]
+[ext_resource type="AudioStream" uid="uid://dmdccr8rfh2im" path="res://assets/audio/gjt_1_1_9_ending_love_.mp3" id="6_547i1"]
 
 [node name="EndScene" type="Node2D"]
 script = ExtResource("1_5wdkr")
@@ -45,5 +48,18 @@ grow_vertical = 2
 scale = Vector2(3, 3)
 texture = ExtResource("3_5lhfv")
 metadata/_edit_use_anchors_ = true
+
+[node name="Dead" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("4_bw4ry")
+parameters/looping = true
+
+[node name="Good" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("5_547i1")
+
+[node name="Love" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_547i1")
+parameters/looping = true
 
 [connection signal="pressed" from="EndButton" to="." method="_on_end_button_pressed"]

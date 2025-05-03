@@ -43,7 +43,7 @@ func filerByValue(array, value):
 		return valueToCheck != value
 		)
 
-var speed_stages = [0.8, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9]
+var speed_stages = [0.8, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2]
 func _physics_process(delta: float) -> void:
 
 	if !started_fight:
@@ -127,7 +127,7 @@ func attack():
 		var basicAttack2 = BasicAttack.instantiate()
 		basicAttack2.position = Vector2(global_position.x - $CollisionShape2D.shape.get_rect().size.x, global_position.y + 5)
 		owner.add_child(basicAttack2)
-	if GlobalState.attack == 3:
+	if GlobalState.attack >= 3:
 		var basicAttack1 = BasicAttack.instantiate()
 		basicAttack1.position = Vector2(global_position.x - $CollisionShape2D.shape.get_rect().size.x, global_position.y - 10)
 		owner.add_child(basicAttack1)

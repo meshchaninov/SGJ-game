@@ -98,7 +98,7 @@ func _on_hit_fox() -> void:
 	$Control/ProgressBar.value = foxHp
 	
 	var stage_index = GlobalState.fox_meeting_number - 1
-	print(GlobalState.fox_meeting_number)
+	#print(GlobalState.fox_meeting_number)
 	var fox_health_to_win_stage = GlobalState.FOX_HP_STAGES[stage_index]
 	if(fox_health_to_win_stage >= foxHp):
 		foxHp = fox_health_to_win_stage

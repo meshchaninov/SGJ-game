@@ -7,9 +7,9 @@
 [ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="4_m2p4e"]
 [ext_resource type="PackedScene" uid="uid://ba267iegwokdt" path="res://scenes/arkanoid/attacks/fox/FireSplashMaker.tscn" id="5_a7hot"]
 [ext_resource type="Script" uid="uid://dxnyfj2hb6x63" path="res://scenes/arkanoid/battle_manager.gd" id="5_tyt7n"]
-[ext_resource type="PackedScene" path="res://scenes/background2.tscn" id="7_pdaft"]
+[ext_resource type="PackedScene" uid="uid://nagfktjdspp0" path="res://scenes/background2.tscn" id="7_pdaft"]
 [ext_resource type="PackedScene" uid="uid://bklv4lk4jw435" path="res://scenes/background.tscn" id="7_x0k0o"]
-[ext_resource type="PackedScene" path="res://scenes/background3.tscn" id="9_m0m5q"]
+[ext_resource type="PackedScene" uid="uid://i80ful2jco6s" path="res://scenes/background3.tscn" id="9_m0m5q"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_80qe2"]
 
