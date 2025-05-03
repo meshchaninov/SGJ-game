@@ -9,6 +9,11 @@ var y_pressed_order = []
 var x_pressed_order = []
 var started_fight = false
 
+var size = 15
+
+func _ready() -> void:
+	size = $CollisionShape2D.shape.get_rect().size.x
+
 func startFight():
 	attack()
 	$Timer.start()
@@ -20,6 +25,7 @@ func endFight():
 	
 var push = false
 
+signal damage
 func hit():
 	# Сделать мигание
 	pass
@@ -29,11 +35,12 @@ func filerByValue(array, value):
 		return valueToCheck != value
 		)
 
+var speed_stages = [0.8, 1, 1.1, 1.2, 1.3]
 func _physics_process(delta: float) -> void:
 
 	if !started_fight:
 		return
-	var result_speed = GlobalState.speed * SPEED
+	var result_speed = speed_stages[GlobalState.speed] * SPEED
 
 	
 	if Input.is_action_just_released("up"):

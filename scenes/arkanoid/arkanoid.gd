@@ -51,9 +51,11 @@ func dummy_init():
 	GlobalState.fox_meeting_number += 1
 	GlobalState.fox_speed_level +=1
 
+var start_fight = false
 func _on_timer_before_start_timeout() -> void:
-	print('FIGHT START')
+	start_fight = true
 	kolobok.startFight()
+	$BattleManager.start_fight()
 	# TODO: тут еще лису подрубать
 
 func damage():
@@ -82,3 +84,7 @@ func on_win() -> void:
 
 func on_lose() -> void:
 	loose.emit()
+
+
+func _on_kolobok_damage() -> void:
+	damage()
