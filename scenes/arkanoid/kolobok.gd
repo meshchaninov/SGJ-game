@@ -24,23 +24,31 @@ func hit():
 	# Сделать мигание
 	pass
 
+func filerByValue(array, value):
+	return array.filter(func(valueToCheck):
+		return valueToCheck != value
+		)
+
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("left"):
-		print('LEFT')
+
 	if !started_fight:
 		return
 	var result_speed = GlobalState.speed * SPEED
 
 	
 	if Input.is_action_just_released("up"):
-		y_pressed_order.erase('up')
+		#y_pressed_order.erase('up')
+		y_pressed_order = filerByValue(y_pressed_order, 'up')
 	if Input.is_action_just_released("down"):
-		y_pressed_order.erase('down')
+		#y_pressed_order.erase('down')
+		y_pressed_order = filerByValue(y_pressed_order, 'down')
 
 	if Input.is_action_just_released("left"):
-		x_pressed_order.erase('left')
+		#x_pressed_order.erase('left')
+		x_pressed_order = filerByValue(x_pressed_order, 'left')
 	if Input.is_action_just_released("right"):
-		x_pressed_order.erase('right')
+		#x_pressed_order.erase('right')
+		x_pressed_order = filerByValue(x_pressed_order, 'right')
 	
 	if Input.is_action_just_pressed("up"):
 		y_pressed_order.push_front('up')

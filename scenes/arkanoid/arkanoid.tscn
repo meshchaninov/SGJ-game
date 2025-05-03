@@ -53,7 +53,7 @@ rotation = 1.5708
 shape = SubResource("WorldBoundaryShape2D_80qe2")
 
 [node name="TimerBeforeStart" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 autostart = true
 
@@ -69,7 +69,7 @@ KolobokfScene = NodePath("../Kolobok")
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
-offset_bottom = 40.0
+offset_bottom = 383.0
 
 [node name="ProgressBar" type="ProgressBar" parent="Control"]
 layout_mode = 0
@@ -77,6 +77,7 @@ offset_left = 7.0
 offset_top = 11.0
 offset_right = 848.0
 offset_bottom = 48.0
+theme_override_constants/outline_size = 20
 theme_override_fonts/font = ExtResource("4_m2p4e")
 theme_override_styles/background = SubResource("StyleBoxFlat_m2p4e")
 theme_override_styles/fill = SubResource("StyleBoxFlat_a7hot")
@@ -94,9 +95,29 @@ offset_left = -358.0
 offset_right = -16.0
 offset_bottom = 60.0
 grow_horizontal = 0
+theme_override_constants/outline_size = 30
 theme_override_fonts/font = ExtResource("4_m2p4e")
 theme_override_font_sizes/font_size = 50
 text = "Здоровьеце 3"
+
+[node name="TimerLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -246.5
+offset_top = -11.5
+offset_right = 246.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("4_m2p4e")
+theme_override_font_sizes/font_size = 100
+text = "3"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="TimerBeforeStart" to="." method="_on_timer_before_start_timeout"]
 [connection signal="hit" from="Fox" to="." method="_on_hit_fox"]

@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bvua485oi8jpu"]
 
 [ext_resource type="Script" uid="uid://f480ttk13vaa" path="res://scenes/arkanoid/fox.gd" id="1_xyauj"]
-[ext_resource type="Texture2D" uid="uid://bkud2sps3d54i" path="res://assets/sprites/fox/fox_side2.png" id="2_xyauj"]
 [ext_resource type="Texture2D" uid="uid://djki7huwqjuae" path="res://assets/sprites/fox/fox_side_paw.png" id="2_yh8vg"]
+[ext_resource type="Texture2D" uid="uid://cijux283gb6j0" path="res://assets/sprites/fox/fox_stage2_side_paw.png" id="3_xyauj"]
 
 [node name="Fox" type="Area2D"]
 script = ExtResource("1_xyauj")
@@ -16,8 +16,8 @@ texture = ExtResource("2_yh8vg")
 
 [node name="Second" type="Sprite2D" parent="FoxVisual"]
 visible = false
-position = Vector2(32, -2)
-texture = ExtResource("2_xyauj")
+position = Vector2(32, 37)
+texture = ExtResource("3_xyauj")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(0, -27, 25, -27, 30, -22, 40, -7, 47, -2, 58, -3, 59, -2, 59, 1, 58, 6, 47, 11, 34, 13, 19, 16, 17, 23, 6, 37, 8, 66, 14, 67, 15, 71, -1, 71)

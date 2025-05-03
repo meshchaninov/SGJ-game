@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnlfj7p2w0cwa"
-path="res://.godot/imported/forest_front.png-d4c47c4b79fadc26cfa64df0b3c2ecc2.ctex"
+uid="uid://cijux283gb6j0"
+path="res://.godot/imported/fox_stage2_side_paw.png-35e7c1938e0e6901d72f17b55102c098.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/dummy/forest_front.png"
-dest_files=["res://.godot/imported/forest_front.png-d4c47c4b79fadc26cfa64df0b3c2ecc2.ctex"]
+source_file="res://assets/sprites/fox/fox_stage2_side_paw.png"
+dest_files=["res://.godot/imported/fox_stage2_side_paw.png-35e7c1938e0e6901d72f17b55102c098.ctex"]
 
 [params]
 
