@@ -10,7 +10,7 @@ func _ready() -> void:
 	HpControl.text = 'Здоровьице: ' + str(Hp)
 	
 	# TODO: это заглушки, стереть когда всё готово
-	dummy_init()
+	#dummy_init()
 	start_scene()
 
 var Hp = GlobalState.max_hp
@@ -33,13 +33,15 @@ func start_scene():
 func bg_init():
 	$Background/Background1.visible = false
 	$Background/Background2.visible = false
-	
-
+	$Background/Background3.visible = false
+	print(GlobalState.fox_meeting_number)
 	if(GlobalState.fox_meeting_number == 1):
 		$Background/Background1.visible = true
 	if(GlobalState.fox_meeting_number == 2):
 		$Background/Background2.visible = true
-	
+	if(GlobalState.fox_meeting_number == 3):
+		$Background/Background3.visible = true
+
 func stop_scene():
 	start_fight = false
 	kolobok.endFight()
