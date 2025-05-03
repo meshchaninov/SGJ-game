@@ -25,19 +25,20 @@ func start_scene():
 	fox.init()
 	bg_init()
 	$Control/ProgressBar.value = foxHp
+	$Control/ProgressBar.max_value = GlobalState.MAX_FOX_HP
 	$Kolobok.position = Vector2(1190, 310)
 	$Kolobok.init()
 	$TimerBeforeStart.start(3)
 	
 func bg_init():
 	$Background/Background1.visible = false
+	$Background/Background2.visible = false
 	
-	var peace_mode = false
-	if(peace_mode):
-		$Background/Background1.visible = true
-		return
+
 	if(GlobalState.fox_meeting_number == 1):
 		$Background/Background1.visible = true
+	if(GlobalState.fox_meeting_number == 2):
+		$Background/Background2.visible = true
 	
 func stop_scene():
 	start_fight = false
@@ -67,8 +68,8 @@ func _process(delta: float) -> void:
 # Заглушка чтобы лиса имела силу какую-то
 func dummy_init():
 	GlobalState.fox_meeting_number += 2
-	GlobalState.fox_speed_level +=3
-	GlobalState.attack = 3
+	GlobalState.fox_speed_level +=1
+	GlobalState.attack = 1
 
 func _on_timer_before_start_timeout() -> void:
 	print('START FIGHT')
@@ -87,10 +88,12 @@ func damage():
 #signal hit_fox
 func _on_hit_fox() -> void:
 	foxHp-=1
+	print('HIT FOX ' + str(foxHp))
+	print('Maxs FOX ' + str($Control/ProgressBar.max_value) )
 	$Control/ProgressBar.value = foxHp
 	
 	var stage_index = GlobalState.fox_meeting_number - 1
-	
+	print(GlobalState.fox_meeting_number)
 	var fox_health_to_win_stage = GlobalState.FOX_HP_STAGES[stage_index]
 	if(fox_health_to_win_stage >= foxHp):
 		foxHp = fox_health_to_win_stage

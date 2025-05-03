@@ -27,19 +27,18 @@ func _physics_process(delta: float) -> void:
 	
 @onready var BasicAttack = preload("res://scenes/arkanoid/attacks/fox/fireBall.tscn")
 
-func start_fire_default(value: float) -> void:
+func start_fire_default(value: float = 90.0, tweenTime: float = 2.0) -> void:
 	if(gap == 0):
 		gap = round(kolobok.size) + 40
 
 	var tween = $Maker.create_tween()
-	
-	tween.tween_property($Maker, 'rotation_degrees', value, 2)
+
+	tween.tween_property($Maker, 'rotation_degrees', value, tweenTime)
 	start_fire = true
 	tween.tween_callback(func():
 		$Maker.rotation_degrees = 0
 		print('START_FIRE END')
 		start_fire = false
-		#count = 0
 		)
 	
 
