@@ -13,6 +13,14 @@ var size = 15
 
 func _ready() -> void:
 	size = $CollisionShape2D.shape.get_rect().size.x
+	
+func init():
+	$Sprites/Base.visible = false
+	$Sprites/Cyber.visible = false
+	if(GlobalState.speed == 1 && GlobalState.max_hp == 2 && GlobalState.attack == 1):
+		$Sprites/Base.visible = true
+	else:
+		$Sprites/Cyber.visible = true
 
 func startFight():
 	attack()
