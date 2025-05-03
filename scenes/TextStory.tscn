@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://fybsyppi2lef"]
+[gd_scene load_steps=18 format=3 uid="uid://fybsyppi2lef"]
 
 [ext_resource type="Script" uid="uid://byp1bj4o4whjp" path="res://scenes/text_story.gd" id="1_5af7w"]
 [ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="1_uc2jp"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://biu6fedq44xph" path="res://assets/button_gameover_pressed.png" id="8_uj7no"]
 [ext_resource type="Texture2D" uid="uid://pl3b3t18tebx" path="res://assets/button_red_FIGHT.png" id="9_gjdeb"]
 [ext_resource type="Texture2D" uid="uid://br1xvg6dql5dl" path="res://assets/button_red_FIGHT_pressed.png" id="10_fh43t"]
+[ext_resource type="AudioStream" uid="uid://b62engeepw48f" path="res://assets/audio/gjt_1_1_9_main_fairytale_.mp3" id="12_uj7no"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_c8osx"]
 
@@ -324,6 +325,11 @@ vertical_alignment = 1
 libraries = {
 &"": SubResource("AnimationLibrary_01a32")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+visible = false
+stream = ExtResource("12_uj7no")
+parameters/looping = true
 
 [connection signal="pressed" from="HBoxContainer/ColorRect/Select 1" to="." method="_on_select_1_pressed"]
 [connection signal="pressed" from="HBoxContainer/ColorRect/Select 2" to="." method="_on_select_2_pressed"]

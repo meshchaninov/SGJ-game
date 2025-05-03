@@ -31,6 +31,7 @@ func _ready() -> void:
 	select_4_button = get_node("HBoxContainer/ColorRect/Select 4")
 	fight_button = get_node("HBoxContainer/ColorRect/FightButton")
 	end_button = get_node("HBoxContainer/ColorRect/EndButton")
+	$AudioStreamPlayer2D.play()
 	_render_text(GlobalState.current_chapter)
 
 func _input(event: InputEvent) -> void:
@@ -263,7 +264,8 @@ func _read_story():
 	return story_blocks
 				
 			
-func _update_game_state(back_to, max_hp, speed, attack, weaker_fox) -> void:
+
+func _update_game_state(back_to:int =0, max_hp:int=0, speed:int=0, attack:int=0, weaker_fox:int=0) -> void:
 	print("max_hp: ", max_hp)
 	print("speed: ", speed)
 	print("attack: ", attack)
@@ -272,7 +274,8 @@ func _update_game_state(back_to, max_hp, speed, attack, weaker_fox) -> void:
 	GlobalState.max_hp += max_hp
 	GlobalState.speed += speed
 	GlobalState.attack += attack
-	GlobalState.fox_speed_level -= weaker_fox
+	if weaker_fox >= 1:
+		GlobalState.fox_speed_level +=1
 
 func _select_pressed(indx):
 	print("disable happy ",GlobalState.disable_happy_ending)
@@ -332,6 +335,7 @@ func _on_fight_button_pressed() -> void:
 
 	GlobalState.chapter_answer = ""
 	GlobalState.fox_speed_level += 1
+	GlobalState.fox_meeting_number += 1
 	GlobalState.current_chapter = global_fight_chapter
 	GlobalState.fox_meeting_number += 1
 	if global_last_fight_now:
