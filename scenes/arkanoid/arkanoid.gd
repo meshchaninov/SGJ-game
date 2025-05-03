@@ -28,13 +28,28 @@ func start_scene():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	var time_left: float = $TimerBeforeStart.time_left
+	var timerLabel: Label = $Control/TimerLabel
+	if(!timerLabel.visible):
+		return
+	if(time_left != 0):
+		timerLabel.text = str(int(round(time_left)))
+	else:
+		var timerHide = Timer.new()
+		timerHide.one_shot= true
+		timerHide.autostart = false
+		timerHide.wait_time = 0.3
+		timerHide.timeout.connect(func():
+			timerLabel.visible = false
+			timerHide.queue_free()
+			)
+		add_child(timerHide)
+		timerHide.start()
 	
 # Заглушка чтобы лиса имела силу какую-то
 func dummy_init():
 	GlobalState.fox_meeting_number += 1
 	GlobalState.fox_speed_level +=1
-
 
 func _on_timer_before_start_timeout() -> void:
 	print('FIGHT START')
