@@ -1,11 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://o0of4k8n3p1h"]
+[gd_scene load_steps=19 format=3 uid="uid://o0of4k8n3p1h"]
 
 [ext_resource type="Texture2D" uid="uid://wuhyqmvv5pch" path="res://assets/sprites/dummy/kolobok.png" id="1_fa6sp"]
 [ext_resource type="Script" uid="uid://dpefieleufn3v" path="res://scenes/arkanoid/kolobok.gd" id="1_xmbe7"]
+[ext_resource type="Texture2D" uid="uid://jvcj61inotwj" path="res://assets/sprites/kolobok/Kolob_base_damage_1.png" id="3_7tf8h"]
 [ext_resource type="Texture2D" uid="uid://me3g363vho82" path="res://assets/sprites/kolobok/Kolob_base.png" id="3_xpnri"]
+[ext_resource type="Texture2D" uid="uid://b4kp2buprc7v6" path="res://assets/sprites/kolobok/Kolob_base_damage_2.png" id="4_e1sqw"]
 [ext_resource type="Texture2D" uid="uid://cpej2787y85n3" path="res://assets/sprites/kolobok/Kolob_base_blink.png" id="4_puenv"]
 [ext_resource type="Texture2D" uid="uid://bwrj8gja81sxi" path="res://assets/sprites/kolobok/Kolob_implant.png" id="5_7ce1r"]
 [ext_resource type="Texture2D" uid="uid://b7p0it0cyfxit" path="res://assets/sprites/kolobok/Kolob_implant_blink.png" id="6_w3r1h"]
+[ext_resource type="Texture2D" uid="uid://c65yut0nwjtjm" path="res://assets/sprites/kolobok/Kolob_implant_damage_1.png" id="7_w0q3s"]
+[ext_resource type="Texture2D" uid="uid://wweex3rmhgdy" path="res://assets/sprites/kolobok/Kolob_implant_damage_2.png" id="8_i7ywn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xmbe7"]
 radius = 23.0868
@@ -50,6 +54,17 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_7tf8h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_e1sqw")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_xpnri")
 }, {
 "duration": 1.0,
@@ -62,6 +77,17 @@ animations = [{
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e1sqw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_w0q3s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_i7ywn")
+}],
+"loop": true,
+"name": &"damage",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("5_7ce1r")
@@ -99,14 +125,17 @@ visible = false
 position = Vector2(1, -4)
 scale = Vector2(0.931641, 0.931641)
 sprite_frames = SubResource("SpriteFrames_7tf8h")
+animation = &"damage"
 autoplay = "default"
-frame_progress = 0.705708
+frame = 1
+frame_progress = 0.556931
 
 [node name="Cyber" type="AnimatedSprite2D" parent="Sprites"]
 visible = false
 position = Vector2(1, -4)
 scale = Vector2(0.932, 0.932)
 sprite_frames = SubResource("SpriteFrames_e1sqw")
+animation = &"damage"
 
 [connection signal="damage" from="." to="." method="hit"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
