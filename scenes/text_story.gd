@@ -305,6 +305,7 @@ func _select_pressed(indx):
 			elif select["update"] == "weaker_fox":
 				weaker_fox = 1	
 			if not select["skipable"] and not select["special"]:
+				GlobalState.fox_meeting_number += 1
 				GlobalState.disable_happy_ending = true
 			if select["romantic"]:
 				GlobalState.romantic += 1
