@@ -16,6 +16,7 @@ var global_fight_chapter = 1
 var global_last_fight_now = false
 var global_skip_visible_char = false
 var global_story_blocks = {}
+var global_typing_text = false
 
 func _ready() -> void:
 	print("Current chapter: ", GlobalState.current_chapter)
@@ -44,23 +45,24 @@ func reset() -> void:
 	rich_text_label_node.clear()
 	rich_text_label_node.text = ""
 	animate_select_buttons.play("FadeOutButtons")
+	global_typing_text = false
 	init()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("Skip text writing"):
+	if event.is_action_pressed("Skip text writing") and global_typing_text:
 		global_skip_visible_char = true
-	elif Input.is_action_just_pressed("FightActive") and fight_button.is_visible_in_tree():
-		fight_button.pressed.emit()
-	elif Input.is_action_just_pressed("End button press") and end_button.is_visible_in_tree():
-		end_button.pressed.emit()
-	elif Input.is_action_just_pressed("Select 1") and select_1_button.is_visible_in_tree():
-		select_1_button.pressed.emit()
-	elif Input.is_action_just_pressed("Select 2") and select_2_button.is_visible_in_tree():
-		select_2_button.pressed.emit()
-	elif Input.is_action_just_pressed("Select 3") and select_3_button.is_visible_in_tree():
-		select_3_button.pressed.emit()
-	elif Input.is_action_just_pressed("Select 4") and select_4_button.is_visible_in_tree():
-		select_4_button.pressed.emit()
+	#elif Input.is_action_just_pressed("FightActive") and fight_button.is_visible_in_tree():
+		#fight_button.pressed.emit()
+	#elif Input.is_action_just_pressed("End button press") and end_button.is_visible_in_tree():
+		#end_button.pressed.emit()
+	#elif Input.is_action_just_pressed("Select 1") and select_1_button.is_visible_in_tree():
+		#select_1_button.pressed.emit()
+	#elif Input.is_action_just_pressed("Select 2") and select_2_button.is_visible_in_tree():
+		#select_2_button.pressed.emit()
+	#elif Input.is_action_just_pressed("Select 3") and select_3_button.is_visible_in_tree():
+		#select_3_button.pressed.emit()
+	#elif Input.is_action_just_pressed("Select 4") and select_4_button.is_visible_in_tree():
+		#select_4_button.pressed.emit()
 
 func _find_next_elem(arr, prev_indx):
 	var prev = null
@@ -112,6 +114,7 @@ func _render_text(story_blocks):
 	var selections_body = {}
 	if GlobalState.chapter_answer != "":
 		rich_text_label_node.text += GlobalState.chapter_answer + "\n"
+		global_typing_text = true
 		for i in GlobalState.chapter_answer.length():
 			if global_skip_visible_char:
 				rich_text_label_node.visible_characters += len(GlobalState.chapter_answer)
@@ -119,10 +122,13 @@ func _render_text(story_blocks):
 				break
 			rich_text_label_node.visible_characters += 1
 			await get_tree().create_timer(0.05).timeout
+		global_typing_text = false
 		
 	for elem in body:
 		if elem["type"] == "text":
 			rich_text_label_node.text += elem["text"] + "\n"
+			global_typing_text = true
+
 			for i in elem["text"].length():
 				if global_skip_visible_char:
 					rich_text_label_node.visible_characters += len(elem["text"])
@@ -130,6 +136,7 @@ func _render_text(story_blocks):
 					break
 				rich_text_label_node.visible_characters += 1
 				await get_tree().create_timer(float(elem["speed"])).timeout
+			global_typing_text = false
 		elif elem["type"] == "selections":
 			rich_text_label_node.text += "\n"
 			for selection in elem["selections"]:
