@@ -139,7 +139,7 @@ grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="TextureRect" parent="HBoxContainer"]
-custom_minimum_size = Vector2(1280, 110)
+custom_minimum_size = Vector2(1280, 100)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
