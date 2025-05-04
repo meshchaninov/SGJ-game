@@ -335,7 +335,11 @@ func _select_pressed(indx):
 			_update_game_state(back_to , max_hp_update, speed_update, attack_update, weaker_fox)
 			GlobalState.chapter_answer = select["answer"]
 			return
-	
+
+func _process(delta: float) -> void:
+	if not $AudioStreamPlayer2D.is_playing():
+			$AudioStreamPlayer2D.play(0.0)
+
 func _on_select_1_pressed() -> void:
 	_select_pressed(1)
 	reset()
