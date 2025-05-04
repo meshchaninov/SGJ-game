@@ -127,8 +127,6 @@ func _render_text(chapter=1):
 				var select_text = "[code]" + selection["data"] + "[/code]\n"
 				rich_text_label_node.text += select_text
 				rich_text_label_node.visible_characters += len(selection["data"])
-			if GlobalState.romantic == 3:
-				current_chapter = 16
 			current_chapter = _find_next_elem(story_blocks, chapter)
 			selections_body = elem
 	
@@ -292,10 +290,10 @@ func _select_pressed(indx):
 	var speed_update = 0
 	var attack_update = 0
 	var weaker_fox = 0
-	print(global_selections)
 	while global_selections == {}:
 		await get_tree().create_timer(0.05).timeout
-
+	
+	var back_to = 1
 	for select in global_selections["selections"]:
 		if select["indx"] == indx:
 			if select["update"] == "max_hp":
@@ -310,7 +308,11 @@ func _select_pressed(indx):
 				GlobalState.disable_happy_ending = true
 			if select["romantic"]:
 				GlobalState.romantic += 1
-			_update_game_state(select["back_to"], max_hp_update, speed_update, attack_update, weaker_fox)
+			print("Romantic: ",GlobalState.romantic)
+			back_to = select["back_to"]
+			if GlobalState.romantic == 3:
+				back_to = select["romantic_end"]
+			_update_game_state(back_to , max_hp_update, speed_update, attack_update, weaker_fox)
 			GlobalState.chapter_answer = select["answer"]
 			return
 	
