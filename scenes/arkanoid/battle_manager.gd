@@ -68,11 +68,11 @@ func start_fight():
 		var degree = 90
 		var fire_bottom_lazers = rng.randi_range(1,2) == 1
 		
-		lazer_bottom()
-		
 		var should_lazer_eye  =  rng.randi_range(1,20) <= 12 #70%
 		if(should_lazer_eye):
-			lazer_eye()
+			await lazer_eye()
+			if(attack_time < 1.5):
+				attack_time = 1.5
 		
 		if(big_degree):
 			degree = 170
@@ -90,7 +90,9 @@ func start_fight():
 			else:
 				splashAdditional(degree, attack_time)
 		if(fire_bottom_lazers):
-			lazer_bottom()
+			await lazer_bottom()
+			if(attack_time < 1.5):
+				attack_time = 1.5
 	var wait_time = rng.randf_range(attack_time+0.2, attack_time+1)
 	#if(long_splash):
 		#rng.randf_range(5.1, 6)
