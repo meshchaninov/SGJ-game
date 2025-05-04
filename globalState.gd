@@ -12,9 +12,9 @@ extends Node
 var fox_meeting_number = 0
 # Тоже повышается после каждого выбора
 var fox_speed_level = 0
-const MAX_FOX_HP = 100
+const MAX_FOX_HP = 300
 var fox_hp = MAX_FOX_HP
-const FOX_HP_STAGES = [70, 30, 0]
+const FOX_HP_STAGES = [70, 40, 0]
 
 ## Player
 var max_hp = 2
@@ -25,6 +25,7 @@ var attack = 1
 var current_chapter = 1
 var chapter_answer = ""
 var last_fight = false
+var first_fight = true
 var disable_happy_ending = false
 var romantic = 0
 
@@ -42,6 +43,7 @@ func reset():
 	current_chapter = 1
 	chapter_answer = ""
 	last_fight = false
+	first_fight = true
 	disable_happy_ending = false
 	romantic = 0
 	end_result = "happy"

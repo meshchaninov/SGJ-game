@@ -32,8 +32,10 @@ func start_scene():
 	$TimerBeforeStart.start(3)
 	#$AudioStreamPlayer2D.loo
 	$AudioStreamPlayer2D.play()
-	if GlobalState.fox_meeting_number > 1:
+	if !GlobalState.first_fight:
 		$Control/ControlGuide.visible = false
+	else:
+		GlobalState.first_fight = false
 	
 func bg_init():
 	$Background/Background1.visible = false
