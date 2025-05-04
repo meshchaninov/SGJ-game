@@ -1,9 +1,5 @@
 extends Control
 
-var story_blocks = {}
-var current_chapter = 1
-var selected_chapter = 1
-var skip_visible_char = false
 var rich_text_label_node: RichTextLabel
 var buttons_container: HBoxContainer
 var animate_select_buttons: AnimationPlayer
@@ -18,10 +14,12 @@ var global_selections = {}
 var global_end_result = "happy"
 var global_fight_chapter = 1
 var global_last_fight_now = false
+var global_skip_visible_char = false
+var global_story_blocks = {}
 
 func _ready() -> void:
 	print("Current chapter: ", GlobalState.current_chapter)
-	story_blocks = _read_story()
+	global_story_blocks = _read_story()
 	rich_text_label_node = get_node("ScrollContainer/RichTextLabel")
 	buttons_container = get_node("HBoxContainer")
 	animate_select_buttons = get_node("AnimateSelectButtons")
@@ -31,12 +29,26 @@ func _ready() -> void:
 	select_4_button = get_node("HBoxContainer/ColorRect/Select 4")
 	fight_button = get_node("HBoxContainer/ColorRect/FightButton")
 	end_button = get_node("HBoxContainer/ColorRect/EndButton")
-	$AudioStreamPlayer2D.play()
-	_render_text(GlobalState.current_chapter)
+	$AudioStreamPlayer2D.play(0.0)
+	init()
+
+func init() -> void:
+	_render_text(global_story_blocks[GlobalState.current_chapter])
+
+func reset() -> void:
+	global_selections = {}
+	global_end_result = "happy"
+	global_fight_chapter = 1
+	global_last_fight_now = false
+	global_skip_visible_char = false
+	rich_text_label_node.clear()
+	rich_text_label_node.text = ""
+	animate_select_buttons.play("FadeOutButtons")
+	init()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Skip text writing"):
-		skip_visible_char = true
+		global_skip_visible_char = true
 	elif Input.is_action_pressed("FightActive") and fight_button.is_visible_in_tree():
 		fight_button.pressed.emit()
 	elif Input.is_action_pressed("End button press") and end_button.is_visible_in_tree():
@@ -91,11 +103,9 @@ func _activate_buttons(selections={}, fight=false, last_fight=false, end=false):
 		end_button.show()
 	
 
-func _render_text(chapter=1):
+func _render_text(story_blocks):
 	rich_text_label_node.visible_characters = 0
-	
-	var body = story_blocks[chapter]
-	print(body)
+	var body = story_blocks
 	var is_end_button = false
 	var is_fight_button = false
 	var is_last_fight = false
@@ -103,9 +113,9 @@ func _render_text(chapter=1):
 	if GlobalState.chapter_answer != "":
 		rich_text_label_node.text += GlobalState.chapter_answer + "\n"
 		for i in GlobalState.chapter_answer.length():
-			if skip_visible_char:
+			if global_skip_visible_char:
 				rich_text_label_node.visible_characters += len(GlobalState.chapter_answer)
-				skip_visible_char = false
+				global_skip_visible_char = false
 				break
 			rich_text_label_node.visible_characters += 1
 			await get_tree().create_timer(0.05).timeout
@@ -114,9 +124,9 @@ func _render_text(chapter=1):
 		if elem["type"] == "text":
 			rich_text_label_node.text += elem["text"] + "\n"
 			for i in elem["text"].length():
-				if skip_visible_char:
+				if global_skip_visible_char:
 					rich_text_label_node.visible_characters += len(elem["text"])
-					skip_visible_char = false
+					global_skip_visible_char = false
 					break
 				rich_text_label_node.visible_characters += 1
 				await get_tree().create_timer(float(elem["speed"])).timeout
@@ -129,7 +139,6 @@ func _render_text(chapter=1):
 				var select_text = "[code]" + selection["data"] + "[/code]\n"
 				rich_text_label_node.text += select_text
 				rich_text_label_node.visible_characters += len(selection["data"])
-			current_chapter = _find_next_elem(story_blocks, chapter)
 			selections_body = elem
 	
 		elif elem["type"] == "end":
@@ -145,12 +154,12 @@ func _render_text(chapter=1):
 	_activate_buttons(selections_body, is_fight_button, is_last_fight, is_end_button)
 
 func _read_story():
+	var story_blocks = {}
 	var parser = XMLParser.new()
 	var error = parser.open("assets/Story.xml")
 	if error != OK:
 		print("Error opening XML file", error)
 		return
-	
 	var current_choose = 0
 	while parser.read() != ERR_FILE_EOF:
 		if parser.get_node_type() == XMLParser.NODE_ELEMENT:
@@ -321,22 +330,22 @@ func _select_pressed(indx):
 	
 func _on_select_1_pressed() -> void:
 	_select_pressed(1)
-	get_tree().reload_current_scene()
+	reset()
 
 
 func _on_select_2_pressed() -> void:
 	_select_pressed(2)
-	get_tree().reload_current_scene()
+	reset()
 
 
 func _on_select_3_pressed() -> void:
 	_select_pressed(3)
-	get_tree().reload_current_scene()
+	reset()
 
 
 func _on_select_4_pressed() -> void: 
 	_select_pressed(4)
-	get_tree().reload_current_scene()
+	reset()
 
  
 func _on_end_button_pressed() -> void:

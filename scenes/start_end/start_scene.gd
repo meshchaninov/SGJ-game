@@ -7,6 +7,6 @@ func _ready() -> void:
 	$AudioStreamPlayer2D.play(0.0)
 
 func _input(event) -> void:
-	if Input.is_action_pressed("Start game"):
+	if Input.is_action_pressed("Start game") and $StartButton.is_visible_in_tree():
 		$StartButton.pressed.emit()
-	
+	 
