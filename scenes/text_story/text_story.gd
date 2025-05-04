@@ -156,7 +156,7 @@ func _render_text(story_blocks):
 func _read_story():
 	var story_blocks = {}
 	var parser = XMLParser.new()
-	var error = parser.open("assets/Story.xml")
+	var error = parser.open("res://assets/Story.xml")
 	if error != OK:
 		print("Error opening XML file", error)
 		return

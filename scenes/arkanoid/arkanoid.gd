@@ -10,7 +10,7 @@ func _ready() -> void:
 	HpControl.text = 'Здоровьице: ' + str(Hp)
 	
 	# TODO: это заглушки, стереть когда всё готово
-	#dummy_init()
+	dummy_init()
 	start_scene()
 	
 

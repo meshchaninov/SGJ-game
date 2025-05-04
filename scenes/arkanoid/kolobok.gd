@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Kolobok
 
 const SPEED = 350.0
-const INERTION = 0.07
+const INERTION = 0.15
 
 var y_pressed_order = []
 var x_pressed_order = []
