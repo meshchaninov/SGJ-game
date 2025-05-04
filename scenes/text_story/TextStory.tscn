@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://fybsyppi2lef"]
 
 [ext_resource type="Script" uid="uid://byp1bj4o4whjp" path="res://scenes/text_story/text_story.gd" id="1_dmpkm"]
-[ext_resource type="Texture2D" uid="uid://bkedc0x8rsvdd" path="res://assets/parchment.png" id="2_f6b3b"]
+[ext_resource type="Texture2D" uid="uid://b20wfd0exdk4q" path="res://assets/perchment 2.png" id="2_dmpkm"]
 [ext_resource type="FontFile" uid="uid://cbgmd2jhm2xhx" path="res://assets/fonts/clacon2.ttf" id="3_p8v06"]
 [ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="4_f577m"]
 [ext_resource type="Texture2D" uid="uid://bngkpd51lefyv" path="res://assets/bakcround_metal.png" id="5_iayax"]
@@ -68,27 +68,32 @@ _data = {
 }
 
 [node name="TextStory" type="Control"]
+custom_minimum_size = Vector2(1280, 720)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -2.0
+offset_right = -4.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dmpkm")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(1548, 951)
+custom_minimum_size = Vector2(1280, 720)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -145.0
-offset_top = -112.0
-offset_right = 123.0
-offset_bottom = 136.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -10.0
+offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_f6b3b")
+texture = ExtResource("2_dmpkm")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_direction = 2
@@ -128,15 +133,16 @@ anchor_top = 0.861111
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 100.0
-offset_bottom = 99.9999
+offset_bottom = 110.0
 grow_horizontal = 2
 grow_vertical = 0
 metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="TextureRect" parent="HBoxContainer"]
-custom_minimum_size = Vector2(1280, 100)
+custom_minimum_size = Vector2(1280, 110)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
+size_flags_vertical = 8
 texture = ExtResource("5_iayax")
 expand_mode = 1
 stretch_mode = 1
