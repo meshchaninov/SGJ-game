@@ -37,6 +37,16 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		skip_visible_char = true
+	elif Input.is_key_pressed(KEY_1) and select_1_button.is_visible_in_tree():
+		select_1_button.pressed.emit()
+	elif Input.is_key_pressed(KEY_2) and select_2_button.is_visible_in_tree():
+		select_2_button.pressed.emit()
+	elif Input.is_key_pressed(KEY_3) and select_3_button.is_visible_in_tree():
+		select_3_button.pressed.emit()
+	elif Input.is_key_pressed(KEY_4) and select_4_button.is_visible_in_tree():
+		select_4_button.pressed.emit()
+	elif Input.is_key_pressed(KEY_ENTER) and fight_button.is_visible_in_tree():
+		fight_button.pressed.emit()
 
 func _find_next_elem(arr, prev_indx):
 	var prev = null
@@ -133,8 +143,6 @@ func _render_text(chapter=1):
 	global_selections = selections_body
 	
 	_activate_buttons(selections_body, is_fight_button, is_last_fight, is_end_button)
-
-
 
 func _read_story():
 	var parser = XMLParser.new()
@@ -284,6 +292,10 @@ func _select_pressed(indx):
 	var speed_update = 0
 	var attack_update = 0
 	var weaker_fox = 0
+	print(global_selections)
+	while global_selections == {}:
+		await get_tree().create_timer(0.05).timeout
+
 	for select in global_selections["selections"]:
 		if select["indx"] == indx:
 			if select["update"] == "max_hp":
@@ -313,13 +325,11 @@ func _on_select_2_pressed() -> void:
 
 
 func _on_select_3_pressed() -> void:
-	animate_select_buttons.play("FadeOutButtons")
 	_select_pressed(3)
 	get_tree().reload_current_scene()
 
 
-func _on_select_4_pressed() -> void:
-	animate_select_buttons.play("FadeOutButtons")
+func _on_select_4_pressed() -> void: 
 	_select_pressed(4)
 	get_tree().reload_current_scene()
 
