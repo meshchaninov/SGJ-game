@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://campmh7b15ah4"
-path="res://.godot/imported/TestBackground.png-27e838e84b91b7836b3ae85730a6c480.ctex"
+uid="uid://blw15k4a0g0o8"
+path="res://.godot/imported/button_WASD.png-f437113aeae677fbb2e9ac6ad5f9f48d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/TestBackground.png"
-dest_files=["res://.godot/imported/TestBackground.png-27e838e84b91b7836b3ae85730a6c480.ctex"]
+source_file="res://assets/button_WASD.png"
+dest_files=["res://.godot/imported/button_WASD.png-f437113aeae677fbb2e9ac6ad5f9f48d.ctex"]
 
 [params]
 
