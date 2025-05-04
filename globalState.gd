@@ -14,7 +14,7 @@ var fox_meeting_number = 0
 var fox_speed_level = 0
 const MAX_FOX_HP = 300
 var fox_hp = MAX_FOX_HP
-const FOX_HP_STAGES = [70, 40, 0]
+const FOX_HP_STAGES = [200, 100, 0]
 
 ## Player
 var max_hp = 2

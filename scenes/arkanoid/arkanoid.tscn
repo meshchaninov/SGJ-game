@@ -233,3 +233,4 @@ one_shot = true
 [connection signal="timeout" from="TimerBeforeStart" to="." method="_on_timer_before_start_timeout"]
 [connection signal="hit" from="Fox" to="." method="_on_hit_fox"]
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
+[connection signal="timeout" from="InvincibleTimer" to="Kolobok" method="stop_blink"]

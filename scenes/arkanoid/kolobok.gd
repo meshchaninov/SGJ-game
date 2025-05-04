@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Kolobok
 
 const SPEED = 350.0
-const INERTION = 0.07
+const INERTION = 0.15
 
 var y_pressed_order = []
 var x_pressed_order = []
@@ -35,8 +35,20 @@ var push = false
 
 signal damage
 func hit():
-	# Сделать мигание
-	pass
+	var sprite: AnimatedSprite2D
+	if(GlobalState.speed == 1 && GlobalState.max_hp == 2 && GlobalState.attack == 1):
+		sprite = $Sprites/Base
+	else:
+		sprite = $Sprites/Cyber
+	sprite.play('damage')
+
+func stop_blink():
+	var sprite: AnimatedSprite2D
+	if(GlobalState.speed == 1 && GlobalState.max_hp == 2 && GlobalState.attack == 1):
+		sprite = $Sprites/Base
+	else:
+		sprite = $Sprites/Cyber
+	sprite.play('default')
 
 func filerByValue(array, value):
 	return array.filter(func(valueToCheck):
