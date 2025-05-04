@@ -1,3 +1,179 @@
-[gd_scene format=3 uid="uid://bwedepy34btxx"]
+[gd_scene load_steps=19 format=3 uid="uid://dw8cj5pexss6e"]
 
-[node name="Lazer" type="Area2D"]
+[ext_resource type="Texture2D" uid="uid://b3igu5qv5oidv" path="res://assets/sprites/fox/fox1.png" id="1_vsg7w"]
+[ext_resource type="Script" uid="uid://cvo1iccr7b22a" path="res://scenes/arkanoid/attacks/fox/lazer.gd" id="1_w5pjk"]
+[ext_resource type="AudioStream" uid="uid://b6ajin5if5dqy" path="res://assets/audio/laser-chargezap-46432.mp3" id="3_w5pjk"]
+[ext_resource type="Texture2D" uid="uid://bgu8w84kpjgpo" path="res://assets/sprites/fox/laser_1.png" id="3_y7t8d"]
+[ext_resource type="Texture2D" uid="uid://bvnlf851kl3pe" path="res://assets/sprites/fox/laser_2.png" id="4_q1igv"]
+[ext_resource type="Texture2D" uid="uid://b8q0my2buj14q" path="res://assets/sprites/fox/fox_preLaser.png" id="5_logd6"]
+[ext_resource type="Texture2D" uid="uid://8gh4vsu7cr3m" path="res://assets/sprites/fox/laser_3.png" id="5_so2fd"]
+[ext_resource type="Texture2D" uid="uid://bqxdksjm8nl8k" path="res://assets/sprites/fox/fox_preLaser_blink.png" id="6_p11eq"]
+[ext_resource type="Texture2D" uid="uid://cbrwy2bttker2" path="res://assets/sprites/fox/laser_4.png" id="6_xrn12"]
+
+[sub_resource type="Animation" id="Animation_pi4ja"]
+resource_name = "EnterScene"
+step = 0.0111111
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fox1:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.307288, 1),
+"transitions": PackedFloat32Array(1, 1, 4.43828),
+"update": 0,
+"values": [0.0, 0.891863, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Fox1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.516505, 0.766667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-88, 66), Vector2(10, 50), Vector2(23, 26), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_logd6"]
+resource_name = "LazerAttack"
+length = 1.5
+step = 0.0166667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"showPreLazer"
+}, {
+"args": [],
+"method": &"soundLazer"
+}, {
+"args": [],
+"method": &"reset"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ml5xn"]
+resource_name = "LazerAttack2"
+step = 0.0166667
+
+[sub_resource type="Animation" id="Animation_vsg7w"]
+resource_name = "LeftScene"
+length = 0.5
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fox1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-75, -38)]
+}
+
+[sub_resource type="Animation" id="Animation_30l0o"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w5pjk"]
+_data = {
+&"EnterScene": SubResource("Animation_pi4ja"),
+&"LazerAttack": SubResource("Animation_logd6"),
+&"LazerAttack2": SubResource("Animation_ml5xn"),
+&"LeftScene": SubResource("Animation_vsg7w"),
+&"RESET": SubResource("Animation_30l0o")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y7t8d"]
+size = Vector2(2151, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q1igv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_y7t8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_q1igv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_so2fd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xrn12")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_so2fd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_logd6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p11eq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Lazer" type="Node2D"]
+script = ExtResource("1_w5pjk")
+
+[node name="Fox1" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(-88, 66)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_vsg7w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w5pjk")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = 1
+
+[node name="CollisionShapeFlash" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(1077.5, 0)
+shape = SubResource("RectangleShape2D_y7t8d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D/CollisionShapeFlash"]
+position = Vector2(16.5, 4)
+scale = Vector2(27.7812, 3.82813)
+sprite_frames = SubResource("SpriteFrames_q1igv")
+autoplay = "default"
+frame_progress = 0.377565
+
+[node name="LazerSound" type="AudioStreamPlayer2D" parent="."]
+visible = false
+position = Vector2(114, 128)
+stream = ExtResource("3_w5pjk")
+
+[node name="PreLazer" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1080, 0)
+scale = Vector2(77.4375, 2.875)
+sprite_frames = SubResource("SpriteFrames_so2fd")
+autoplay = "default"
+frame_progress = 0.563415
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="visibility_changed" from="Area2D/CollisionShapeFlash" to="." method="_on_collision_shape_flash_visibility_changed"]

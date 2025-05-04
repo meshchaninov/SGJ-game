@@ -43,7 +43,7 @@ func filerByValue(array, value):
 		return valueToCheck != value
 		)
 
-var speed_stages = [0.8, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0, 2.2]
+var speed_stages = [1, 1.5, 2, 2.5, 3, 3.4, 4, 4.5, 5, 5.5, 6.5, 7]
 func _physics_process(delta: float) -> void:
 
 	if !started_fight:

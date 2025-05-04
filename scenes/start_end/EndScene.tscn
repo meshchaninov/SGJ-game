@@ -52,7 +52,6 @@ metadata/_edit_use_anchors_ = true
 [node name="Dead" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource("4_bw4ry")
-parameters/looping = true
 
 [node name="Good" type="AudioStreamPlayer2D" parent="."]
 visible = false
@@ -61,6 +60,5 @@ stream = ExtResource("5_547i1")
 [node name="Love" type="AudioStreamPlayer2D" parent="."]
 visible = false
 stream = ExtResource("6_547i1")
-parameters/looping = true
 
 [connection signal="pressed" from="EndButton" to="." method="_on_end_button_pressed"]
