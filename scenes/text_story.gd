@@ -35,18 +35,18 @@ func _ready() -> void:
 	_render_text(GlobalState.current_chapter)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("Skip text writing"):
 		skip_visible_char = true
-	elif Input.is_key_pressed(KEY_1) and select_1_button.is_visible_in_tree():
-		select_1_button.pressed.emit()
-	elif Input.is_key_pressed(KEY_2) and select_2_button.is_visible_in_tree():
-		select_2_button.pressed.emit()
-	elif Input.is_key_pressed(KEY_3) and select_3_button.is_visible_in_tree():
-		select_3_button.pressed.emit()
-	elif Input.is_key_pressed(KEY_4) and select_4_button.is_visible_in_tree():
-		select_4_button.pressed.emit()
-	elif Input.is_key_pressed(KEY_ENTER) and fight_button.is_visible_in_tree():
+	elif Input.is_action_pressed("FightActive"):
 		fight_button.pressed.emit()
+	elif Input.is_action_pressed("Select 1") and select_1_button.is_visible_in_tree():
+		select_1_button.pressed.emit()
+	elif Input.is_action_pressed("Select 2") and select_2_button.is_visible_in_tree():
+		select_2_button.pressed.emit()
+	elif Input.is_action_pressed("Select 3") and select_3_button.is_visible_in_tree():
+		select_3_button.pressed.emit()
+	elif Input.is_action_pressed("Select 4") and select_4_button.is_visible_in_tree():
+		select_4_button.pressed.emit()
 
 func _find_next_elem(arr, prev_indx):
 	var prev = null
