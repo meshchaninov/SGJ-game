@@ -325,7 +325,8 @@ func _select_pressed(indx):
 			if not select["skipable"] and not select["special"]:
 				GlobalState.disable_happy_ending = true
 			if select["skipable"]:
-				GlobalState.fox_meeting_number += 1
+				if GlobalState.fox_meeting_number < 3:
+					GlobalState.fox_meeting_number += 1
 			if select["romantic"]:
 				GlobalState.romantic += 1
 			back_to = select["back_to"]
