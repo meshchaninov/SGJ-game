@@ -16,4 +16,5 @@ func _ready() -> void:
 		$EndButton.text = "И жили они долго и счастливо"
 
 func _on_end_button_pressed() -> void:
+	GlobalState.reset()
 	get_tree().change_scene_to_file("res://scenes/start_end/StartScene.tscn")
