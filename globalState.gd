@@ -35,10 +35,12 @@ var end_result = "happy"
 func reset():
 	fox_meeting_number = 0
 	fox_speed_level = 0
+	fox_hp = MAX_FOX_HP
 	max_hp = 2
 	speed = 1
 	attack = 1
 	current_chapter = 1
+	chapter_answer = ""
 	last_fight = false
 	disable_happy_ending = false
 	romantic = 0

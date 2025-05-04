@@ -1,17 +1,17 @@
 [gd_scene load_steps=18 format=3 uid="uid://fybsyppi2lef"]
 
-[ext_resource type="Script" uid="uid://byp1bj4o4whjp" path="res://scenes/text_story.gd" id="1_5af7w"]
-[ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="1_uc2jp"]
-[ext_resource type="Texture2D" uid="uid://bkedc0x8rsvdd" path="res://assets/parchment.png" id="2_b03a7"]
-[ext_resource type="FontFile" uid="uid://cbgmd2jhm2xhx" path="res://assets/fonts/clacon2.ttf" id="2_pp542"]
-[ext_resource type="Texture2D" uid="uid://bfl5bd10mdyem" path="res://assets/button_metal.png" id="5_01a32"]
-[ext_resource type="Texture2D" uid="uid://bngkpd51lefyv" path="res://assets/bakcround_metal.png" id="5_b03a7"]
-[ext_resource type="Texture2D" uid="uid://csgot2xgm6jht" path="res://assets/button_metal_pressed.png" id="6_c8osx"]
-[ext_resource type="Texture2D" uid="uid://c7bso1rsrlggb" path="res://assets/button_gameover.png" id="7_b03a7"]
-[ext_resource type="Texture2D" uid="uid://biu6fedq44xph" path="res://assets/button_gameover_pressed.png" id="8_uj7no"]
-[ext_resource type="Texture2D" uid="uid://pl3b3t18tebx" path="res://assets/button_red_FIGHT.png" id="9_gjdeb"]
-[ext_resource type="Texture2D" uid="uid://br1xvg6dql5dl" path="res://assets/button_red_FIGHT_pressed.png" id="10_fh43t"]
-[ext_resource type="AudioStream" uid="uid://b62engeepw48f" path="res://assets/audio/gjt_1_1_9_main_fairytale_.mp3" id="12_uj7no"]
+[ext_resource type="Script" uid="uid://byp1bj4o4whjp" path="res://scenes/text_story/text_story.gd" id="1_dmpkm"]
+[ext_resource type="Texture2D" uid="uid://bkedc0x8rsvdd" path="res://assets/parchment.png" id="2_f6b3b"]
+[ext_resource type="FontFile" uid="uid://cbgmd2jhm2xhx" path="res://assets/fonts/clacon2.ttf" id="3_p8v06"]
+[ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="4_f577m"]
+[ext_resource type="Texture2D" uid="uid://bngkpd51lefyv" path="res://assets/bakcround_metal.png" id="5_iayax"]
+[ext_resource type="Texture2D" uid="uid://bfl5bd10mdyem" path="res://assets/button_metal.png" id="6_66y4q"]
+[ext_resource type="Texture2D" uid="uid://csgot2xgm6jht" path="res://assets/button_metal_pressed.png" id="7_s2j1g"]
+[ext_resource type="Texture2D" uid="uid://c7bso1rsrlggb" path="res://assets/button_gameover.png" id="8_13e5c"]
+[ext_resource type="Texture2D" uid="uid://biu6fedq44xph" path="res://assets/button_gameover_pressed.png" id="9_fqwj5"]
+[ext_resource type="Texture2D" uid="uid://pl3b3t18tebx" path="res://assets/button_red_FIGHT.png" id="10_1bw88"]
+[ext_resource type="Texture2D" uid="uid://br1xvg6dql5dl" path="res://assets/button_red_FIGHT_pressed.png" id="11_ja7bm"]
+[ext_resource type="AudioStream" uid="uid://b62engeepw48f" path="res://assets/audio/gjt_1_1_9_main_fairytale_.mp3" id="12_c34ut"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_c8osx"]
 
@@ -74,7 +74,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_5af7w")
+script = ExtResource("1_dmpkm")
 metadata/_edit_group_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -89,7 +89,7 @@ offset_right = 123.0
 offset_bottom = 119.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_b03a7")
+texture = ExtResource("2_f6b3b")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -105,7 +105,7 @@ offset_bottom = -42.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_pp542")
+theme_override_fonts/font = ExtResource("3_p8v06")
 text = "Нажмите <пробел> для пропуска"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
@@ -129,9 +129,9 @@ theme_override_colors/default_color = Color(0.831373, 0, 0, 1)
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_outline_size = 2
-theme_override_fonts/normal_font = ExtResource("1_uc2jp")
-theme_override_fonts/mono_font = ExtResource("2_pp542")
-theme_override_fonts/italics_font = ExtResource("1_uc2jp")
+theme_override_fonts/normal_font = ExtResource("4_f577m")
+theme_override_fonts/mono_font = ExtResource("3_p8v06")
+theme_override_fonts/italics_font = ExtResource("4_f577m")
 theme_override_font_sizes/italics_font_size = 38
 theme_override_font_sizes/mono_font_size = 40
 theme_override_font_sizes/normal_font_size = 40
@@ -153,7 +153,7 @@ grow_vertical = 0
 custom_minimum_size = Vector2(1280, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("5_b03a7")
+texture = ExtResource("5_iayax")
 expand_mode = 1
 stretch_mode = 1
 
@@ -167,9 +167,9 @@ offset_top = 20.0
 offset_right = 187.0
 offset_bottom = 70.0
 size_flags_horizontal = 0
-texture_normal = ExtResource("5_01a32")
-texture_pressed = ExtResource("6_c8osx")
-texture_hover = ExtResource("6_c8osx")
+texture_normal = ExtResource("6_66y4q")
+texture_pressed = ExtResource("7_s2j1g")
+texture_hover = ExtResource("7_s2j1g")
 
 [node name="Label" type="Label" parent="HBoxContainer/ColorRect/Select 1"]
 layout_mode = 1
@@ -179,7 +179,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_pp542")
+theme_override_fonts/font = ExtResource("3_p8v06")
 theme_override_font_sizes/font_size = 27
 text = "Выбор 1"
 horizontal_alignment = 1
@@ -195,9 +195,9 @@ offset_top = 19.0
 offset_right = 373.0
 offset_bottom = 69.0
 size_flags_horizontal = 0
-texture_normal = ExtResource("5_01a32")
-texture_pressed = ExtResource("6_c8osx")
-texture_hover = ExtResource("6_c8osx")
+texture_normal = ExtResource("6_66y4q")
+texture_pressed = ExtResource("7_s2j1g")
+texture_hover = ExtResource("7_s2j1g")
 
 [node name="Label" type="Label" parent="HBoxContainer/ColorRect/Select 2"]
 layout_mode = 1
@@ -207,7 +207,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_pp542")
+theme_override_fonts/font = ExtResource("3_p8v06")
 theme_override_font_sizes/font_size = 27
 text = "Выбор 2"
 horizontal_alignment = 1
@@ -223,9 +223,9 @@ offset_top = 19.0
 offset_right = 567.0
 offset_bottom = 69.0
 size_flags_horizontal = 0
-texture_normal = ExtResource("5_01a32")
-texture_pressed = ExtResource("6_c8osx")
-texture_hover = ExtResource("6_c8osx")
+texture_normal = ExtResource("6_66y4q")
+texture_pressed = ExtResource("7_s2j1g")
+texture_hover = ExtResource("7_s2j1g")
 
 [node name="Label" type="Label" parent="HBoxContainer/ColorRect/Select 3"]
 layout_mode = 1
@@ -235,7 +235,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_pp542")
+theme_override_fonts/font = ExtResource("3_p8v06")
 theme_override_font_sizes/font_size = 27
 text = "Выбор 3"
 horizontal_alignment = 1
@@ -251,9 +251,9 @@ offset_top = 20.0
 offset_right = 756.0
 offset_bottom = 70.0
 size_flags_horizontal = 0
-texture_normal = ExtResource("5_01a32")
-texture_pressed = ExtResource("6_c8osx")
-texture_hover = ExtResource("6_c8osx")
+texture_normal = ExtResource("6_66y4q")
+texture_pressed = ExtResource("7_s2j1g")
+texture_hover = ExtResource("7_s2j1g")
 
 [node name="Label" type="Label" parent="HBoxContainer/ColorRect/Select 4"]
 layout_mode = 1
@@ -263,7 +263,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_pp542")
+theme_override_fonts/font = ExtResource("3_p8v06")
 theme_override_font_sizes/font_size = 27
 text = "Выбор 4"
 horizontal_alignment = 1
@@ -279,9 +279,9 @@ offset_top = 22.0
 offset_right = 1065.0
 offset_bottom = 72.0
 size_flags_horizontal = 0
-texture_normal = ExtResource("7_b03a7")
+texture_normal = ExtResource("8_13e5c")
 texture_pressed = SubResource("ViewportTexture_c8osx")
-texture_hover = ExtResource("8_uj7no")
+texture_hover = ExtResource("9_fqwj5")
 
 [node name="Label" type="Label" parent="HBoxContainer/ColorRect/EndButton"]
 layout_mode = 1
@@ -290,7 +290,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_pp542")
+theme_override_fonts/font = ExtResource("3_p8v06")
 theme_override_font_sizes/font_size = 27
 text = "Конец!"
 horizontal_alignment = 1
@@ -306,9 +306,9 @@ offset_top = 15.0
 offset_right = 1251.0
 offset_bottom = 65.0
 size_flags_horizontal = 0
-texture_normal = ExtResource("9_gjdeb")
-texture_pressed = ExtResource("10_fh43t")
-texture_hover = ExtResource("10_fh43t")
+texture_normal = ExtResource("10_1bw88")
+texture_pressed = ExtResource("11_ja7bm")
+texture_hover = ExtResource("11_ja7bm")
 
 [node name="Label" type="Label" parent="HBoxContainer/ColorRect/FightButton"]
 layout_mode = 1
@@ -321,7 +321,7 @@ offset_right = -3.0
 offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_pp542")
+theme_override_fonts/font = ExtResource("3_p8v06")
 theme_override_font_sizes/font_size = 23
 text = "Биться!"
 horizontal_alignment = 1
@@ -334,7 +334,7 @@ libraries = {
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 visible = false
-stream = ExtResource("12_uj7no")
+stream = ExtResource("12_c34ut")
 parameters/looping = true
 
 [connection signal="pressed" from="HBoxContainer/ColorRect/Select 1" to="." method="_on_select_1_pressed"]

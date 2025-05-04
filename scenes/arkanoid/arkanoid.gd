@@ -113,7 +113,7 @@ func on_win() -> void:
 	stop_scene()
 	if GlobalState.last_fight:
 		GlobalState.end_result = "happy"
-	get_tree().change_scene_to_file("res://scenes/TextStory.tscn")
+	get_tree().change_scene_to_file("res://scenes/text_story/TextStory.tscn")
 
 func on_lose() -> void:
 	stop_scene()

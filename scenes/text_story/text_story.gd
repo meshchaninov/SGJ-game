@@ -37,8 +37,10 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Skip text writing"):
 		skip_visible_char = true
-	elif Input.is_action_pressed("FightActive"):
+	elif Input.is_action_pressed("FightActive") and fight_button.is_visible_in_tree():
 		fight_button.pressed.emit()
+	elif Input.is_action_pressed("End button press") and end_button.is_visible_in_tree():
+		end_button.pressed.emit()
 	elif Input.is_action_pressed("Select 1") and select_1_button.is_visible_in_tree():
 		select_1_button.pressed.emit()
 	elif Input.is_action_pressed("Select 2") and select_2_button.is_visible_in_tree():
@@ -305,11 +307,11 @@ func _select_pressed(indx):
 			elif select["update"] == "weaker_fox":
 				weaker_fox = 1	
 			if not select["skipable"] and not select["special"]:
-				GlobalState.fox_meeting_number += 1
 				GlobalState.disable_happy_ending = true
+			if select["skipable"]:
+				GlobalState.fox_meeting_number += 1
 			if select["romantic"]:
 				GlobalState.romantic += 1
-			print("Romantic: ",GlobalState.romantic)
 			back_to = select["back_to"]
 			if GlobalState.romantic == 3:
 				back_to = select["romantic_end"]
@@ -347,7 +349,8 @@ func _on_end_button_pressed() -> void:
 func _on_fight_button_pressed() -> void:
 	GlobalState.chapter_answer = ""
 	GlobalState.fox_speed_level += 1
-	GlobalState.fox_meeting_number += 1
+	if GlobalState.fox_meeting_number < 3:
+		GlobalState.fox_meeting_number += 1
 	GlobalState.current_chapter = global_fight_chapter
 	if global_last_fight_now:
 		GlobalState.last_fight = true
