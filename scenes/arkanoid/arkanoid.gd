@@ -32,6 +32,8 @@ func start_scene():
 	$TimerBeforeStart.start(3)
 	#$AudioStreamPlayer2D.loo
 	$AudioStreamPlayer2D.play()
+	if GlobalState.fox_meeting_number > 1:
+		$Control/ControlGuide.visible = false
 	
 func bg_init():
 	$Background/Background1.visible = false
@@ -65,6 +67,7 @@ func _process(delta: float) -> void:
 		timerHide.wait_time = 0.3
 		timerHide.timeout.connect(func():
 			timerLabel.visible = false
+			$Control/ControlGuide.visible = false
 			timerHide.queue_free()
 			)
 		add_child(timerHide)

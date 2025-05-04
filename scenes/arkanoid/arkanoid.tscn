@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ccbptpror07jw"]
+[gd_scene load_steps=15 format=3 uid="uid://ccbptpror07jw"]
 
 [ext_resource type="Script" uid="uid://bm6hg4rs56mnm" path="res://scenes/arkanoid/arkanoid.gd" id="1_hqduh"]
 [ext_resource type="PackedScene" uid="uid://o0of4k8n3p1h" path="res://scenes/arkanoid/kolobok.tscn" id="2_80qe2"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bupye1yskoag3" path="res://assets/fonts/BalkaraFreeCondensed.ttf" id="4_m2p4e"]
 [ext_resource type="PackedScene" uid="uid://ba267iegwokdt" path="res://scenes/arkanoid/attacks/fox/FireSplashMaker.tscn" id="5_a7hot"]
 [ext_resource type="Script" uid="uid://dxnyfj2hb6x63" path="res://scenes/arkanoid/battle_manager.gd" id="5_tyt7n"]
+[ext_resource type="Texture2D" uid="uid://blw15k4a0g0o8" path="res://assets/button_WASD.png" id="6_risvm"]
 [ext_resource type="PackedScene" uid="uid://nagfktjdspp0" path="res://scenes/background2.tscn" id="7_pdaft"]
 [ext_resource type="PackedScene" uid="uid://bklv4lk4jw435" path="res://scenes/background.tscn" id="7_x0k0o"]
 [ext_resource type="PackedScene" uid="uid://i80ful2jco6s" path="res://scenes/background3.tscn" id="9_m0m5q"]
@@ -129,6 +130,15 @@ theme_override_fonts/font = ExtResource("4_m2p4e")
 theme_override_font_sizes/font_size = 100
 text = "3"
 horizontal_alignment = 1
+
+[node name="ControlGuide" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 491.0
+offset_top = 368.0
+offset_right = 650.0
+offset_bottom = 468.0
+scale = Vector2(2, 2)
+texture = ExtResource("6_risvm")
 
 [node name="BattleManager" type="Node2D" parent="."]
 z_index = 2
