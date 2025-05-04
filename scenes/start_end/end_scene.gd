@@ -13,6 +13,7 @@ func _ready() -> void:
 		$EndButton.text = "Молодец, рыжая пущена на шарф"
 	elif GlobalState.end_result == "romantic":
 		$Love.play()
+		$Kolobok.scale = Vector2(5, 5)
 		$EndButton.text = "И жили они долго и счастливо"
 
 func _on_end_button_pressed() -> void:
