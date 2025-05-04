@@ -99,6 +99,7 @@ max_value = 600.0
 step = 1.0
 value = 70.0
 rounded = true
+show_percentage = false
 
 [node name="HP" type="Label" parent="Control"]
 layout_mode = 1
@@ -232,5 +233,20 @@ one_shot = true
 [connection signal="damage" from="Kolobok" to="." method="_on_kolobok_damage"]
 [connection signal="timeout" from="TimerBeforeStart" to="." method="_on_timer_before_start_timeout"]
 [connection signal="hit" from="Fox" to="." method="_on_hit_fox"]
+[connection signal="shot_ended" from="BattleManager/LazerDown1" to="BattleManager" method="_on_lazer_down_shot_ended"]
+[connection signal="shot_started" from="BattleManager/LazerDown1" to="BattleManager" method="_on_lazer_down_shot_started"]
+[connection signal="shot_ended" from="BattleManager/LazerDown2" to="BattleManager" method="_on_lazer_down_shot_ended"]
+[connection signal="shot_started" from="BattleManager/LazerDown2" to="BattleManager" method="_on_lazer_down_shot_started"]
+[connection signal="shot_ended" from="BattleManager/LazerDown3" to="BattleManager" method="_on_lazer_down_shot_ended"]
+[connection signal="shot_started" from="BattleManager/LazerDown3" to="BattleManager" method="_on_lazer_down_shot_started"]
+[connection signal="shot_ended" from="BattleManager/LazerDown4" to="BattleManager" method="_on_lazer_down_shot_ended"]
+[connection signal="shot_started" from="BattleManager/LazerDown4" to="BattleManager" method="_on_lazer_down_shot_started"]
+[connection signal="shot_ended" from="BattleManager/LazerDown5" to="BattleManager" method="_on_lazer_down_shot_ended"]
+[connection signal="shot_started" from="BattleManager/LazerDown5" to="BattleManager" method="_on_lazer_down_shot_started"]
+[connection signal="shot_ended" from="BattleManager/LazerLeft1" to="BattleManager" method="_on_lazer_down_shot_ended"]
+[connection signal="shot_started" from="BattleManager/LazerLeft1" to="BattleManager" method="_on_lazer_down_shot_started"]
+[connection signal="shot_ended" from="BattleManager/LazerLeft" to="BattleManager" method="_on_lazer_down_shot_ended"]
+[connection signal="shot_started" from="BattleManager/LazerLeft" to="BattleManager" method="_on_lazer_down_shot_started"]
+[connection signal="shot_ended" from="BattleManager/LazerEye" to="BattleManager" method="_on_lazer_eye_shot_ended"]
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]
 [connection signal="timeout" from="InvincibleTimer" to="Kolobok" method="stop_blink"]
