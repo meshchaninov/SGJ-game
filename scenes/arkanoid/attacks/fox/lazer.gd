@@ -24,8 +24,11 @@ func _physics_process(_delta: float) -> void:
 
 const speed_const = [1, 1.2, 1.3 , 1.4, 1.5, 1.6, 1.7, 1.8]
 
+signal shot_started(lazer: Lazer)
+signal shot_ended(lazer: Lazer)
 var fast = false
 func startShot(fast_param = false):
+	shot_started.emit(self)
 	fast = fast_param
 	if (fast):
 		$AnimationPlayer.speed_scale = speed_const[GlobalState.fox_speed_level]*1.3
@@ -45,6 +48,7 @@ func startShot(fast_param = false):
 		$AnimationPlayer.play("LeftScene")
 		await $AnimationPlayer.animation_finished
 		$Fox1.visible = false 
+	shot_ended.emit(self)
 	
 
 func showPreLazer():
