@@ -75,7 +75,7 @@ func _process(delta: float) -> void:
 		add_child(timerHide)
 		timerHide.start()
 	if not $AudioStreamPlayer2D.is_playing():
-			$AudioStreamPlayer2D.play(0.0)
+		$AudioStreamPlayer2D.play(0.0)
 
 # Заглушка чтобы лиса имела силу какую-то
 func dummy_init():

@@ -376,4 +376,5 @@ func _on_fight_button_pressed() -> void:
 	if global_last_fight_now:
 		GlobalState.last_fight = true
 	#get_tree().reload_current_scene()
-	get_tree().change_scene_to_file("res://scenes/arkanoid/arkanoid.tscn")
+	#get_tree().change_scene_to_file("res://scenes/arkanoid/arkanoid.tscn")
+	reset()
