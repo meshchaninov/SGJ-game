@@ -51,18 +51,18 @@ func reset() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Skip text writing") and global_typing_text:
 		global_skip_visible_char = true
-	#elif Input.is_action_just_pressed("FightActive") and fight_button.is_visible_in_tree():
-		#fight_button.pressed.emit()
-	#elif Input.is_action_just_pressed("End button press") and end_button.is_visible_in_tree():
-		#end_button.pressed.emit()
-	#elif Input.is_action_just_pressed("Select 1") and select_1_button.is_visible_in_tree():
-		#select_1_button.pressed.emit()
-	#elif Input.is_action_just_pressed("Select 2") and select_2_button.is_visible_in_tree():
-		#select_2_button.pressed.emit()
-	#elif Input.is_action_just_pressed("Select 3") and select_3_button.is_visible_in_tree():
-		#select_3_button.pressed.emit()
-	#elif Input.is_action_just_pressed("Select 4") and select_4_button.is_visible_in_tree():
-		#select_4_button.pressed.emit()
+	elif Input.is_action_just_pressed("FightActive") and fight_button.is_visible_in_tree() and not global_typing_text:
+		fight_button.pressed.emit()
+	elif Input.is_action_just_pressed("End button press") and end_button.is_visible_in_tree() and not global_typing_text:
+		end_button.pressed.emit()
+	elif Input.is_action_just_pressed("Select 1") and select_1_button.is_visible_in_tree() and not global_typing_text:
+		select_1_button.pressed.emit()
+	elif Input.is_action_just_pressed("Select 2") and select_2_button.is_visible_in_tree() and not global_typing_text:
+		select_2_button.pressed.emit()
+	elif Input.is_action_just_pressed("Select 3") and select_3_button.is_visible_in_tree() and not global_typing_text:
+		select_3_button.pressed.emit()
+	elif Input.is_action_just_pressed("Select 4") and select_4_button.is_visible_in_tree() and not global_typing_text:
+		select_4_button.pressed.emit()
 
 func _find_next_elem(arr, prev_indx):
 	var prev = null
@@ -338,7 +338,7 @@ func _select_pressed(indx):
 
 func _process(delta: float) -> void:
 	if not $AudioStreamPlayer2D.is_playing():
-			$AudioStreamPlayer2D.play(0.0)
+		$AudioStreamPlayer2D.play(0.0)
 
 func _on_select_1_pressed() -> void:
 	_select_pressed(1)
@@ -376,5 +376,4 @@ func _on_fight_button_pressed() -> void:
 	if global_last_fight_now:
 		GlobalState.last_fight = true
 	#get_tree().reload_current_scene()
-	#get_tree().change_scene_to_file("res://scenes/arkanoid/arkanoid.tscn")
-	reset()
+	get_tree().change_scene_to_file("res://scenes/arkanoid/arkanoid.tscn")
